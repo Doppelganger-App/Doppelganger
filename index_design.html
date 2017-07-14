@@ -3,6 +3,8 @@
 <head>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
     <title>Doppelganger</title>
 </head>
 
@@ -17,23 +19,37 @@
     </nav>
 
     <div class="container">
-      <img class="materialboxed" width="350" style="margin-top: 50px; margin-left: 30%;"src="./head_03.png">
-
-	  <div class="carousel">
-	    <a class="carousel-item" href="#one!"><h1>Doppelgänger</h1></a>
-	    <a class="carousel-item" href="#two!"><p style="color: white;">You have come to the right spot to broaden your worldview!</p></a>
-	    <a class="carousel-item" href="#three!"><p style="color: white;">Log on and fill out our short survey.</p></a>
-	    <a class="carousel-item" href="#four!"><p style="color: white;">We will provide you with podcasts and youtube videos that show you topics from a different point of view.</p></a>
-	    <a class="carousel-item" href="#five!"><p style="color: white;">You can also connect to people on our network to talk about topics of your choice to bring all of us closer together.</p></a>
+      <img class="materialboxed" width="350" style="margin-top: 50px; margin-left: 33%; margin-bottom: 25px;" src="./head_03.png">
+	  <div class="carousel carousel-slider center" data-indicators="true" style="height: 250px;">
+	    <div class="carousel-fixed-item center">
+	      <a class="chip waves-effect grey grey-text darken-2 lighten-text-2 pulse" style="height: 50px; line-height: 50px;">Create your Doppelgänger</a>
+	    </div>
+	    <div class="carousel-item black white-text" style="margin-top: 50px;" href="#one!">
+	      <h1>Doppelgänger</h1>
+	      <p class="white-text">The app that lets you open your mind...</p>
+	    </div>
+	    <div class="carousel-item black white-text" href="#two!">
+	      <p class="white-text">Have you ever wondered, what you are missing? <br />
+	      If there is something else out there that might interest or excite you? <br />
+	      What other people are talking and thinking about?</p>
+	    </div>
+	    <div class="carousel-item black white-text" href="#three!">
+	      <p class="white-text">You have come to the right place! Doppelgänger gives you the tools to find new and exciting ideas, <br /> other points of view and lets you explore the world by providing you <br /> thought-provoking podcasts and inspiriational YouTube videos.</p>
+	    </div>
+	    <div class="carousel-item black white-text" href="#four!">
+	      <p class="white-text">The way to your new and improved self is just a click away! <br /> 
+	      Sign up, answer our short questionnaire and begin seeing the world through the eyes of "the other".</p>
+	    </div>
 	  </div>
-
-
+	  
     </div>
 
 <script>    
 $(document).ready(function(){
       $('.carousel').carousel();
-    });
+   $('.carousel.carousel-slider').carousel({fullWidth: true});
+   });
+
 </script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
