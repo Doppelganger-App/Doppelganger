@@ -1,0 +1,20 @@
+{
+  "name": "doppelganger",
+  "version": "1.0.0",
+  "description": "open your mind",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Doppelganger-App/Doppelganger.git"
+  },
+  "author": "Doppleganger Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Doppelganger-App/Doppelganger/issues"
+  },
+  "homepage": "https://github.com/Doppelganger-App/Doppelganger#readme"
+}
