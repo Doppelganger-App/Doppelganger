@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Anton|Days+One|Jura" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+    <title>Doppelganger</title>
+</head>
+
+<body style="background-color: black;">
+    <nav style="background-color: black;">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo masthead"><img src="./assets/images/head_03.png" style="width: 60px" id="logoImg" alt="head"> Doppelgänger</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="collapsible.html">Welcome, User</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="wrapper">
+
+<!-- Side Panel w/ saved items and chat groups -->
+        <div id="savedDiv">
+            <h4 class="divTitles">Your Saved Items</h4>
+                <ul class="collapsible savedList" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">grade</i>Example Bookmark 1</div>
+                  <div class="collapsible-body links"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">grade</i>Example Bookmark 2</div>
+                  <div class="collapsible-body links"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">grade</i>Example Bookmark 3</div>
+                  <div class="collapsible-body links"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+              </ul>
+        </div>
+
+
+    <!-- Search/Topic Div -->
+        <div id="searchBox">
+            <h4 class="divTitles">Choose the topic.</h4>
+            <div class="row tabTable">
+                <div class="col s12">
+                  <ul class="tabs">
+                    <li class="tab col s3 tabs-fixed-width"><a class="active" href="#interests">Interests</a></li>
+                    <li class="tab col s3 tabs-fixed-width"><a href="#politics">Politics</a></li>
+                  </ul>
+                </div>
+                    <div id="interests" class="col s12">
+                    <p class="instr">Type a search term below (e.g. 'evolution', 'JavaScript', 'poetry', 'film').</p>
+                        <div class="row">
+                            <form class="col s12">
+                              <div class="row">
+                                <div class="input-field col s6">
+                                  <input placeholder="Type a topic here" id="interestTopicInput" type="text" class="validate">
+                                  <label for="interestTopicInput">Search Term:</label>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <a class="btn-floating btn-large waves-effect waves-light red addI"><i class="material-icons">add</i></a>
+                        
+                        <div class="iButtonsDiv"></div>
+                    </div>
+
+                    <div id="politics" class="col s12">
+                        <p class="instr">Type a search term below (e.g. 'environment', 'socialism', 'constitution', 'military').</p>
+                        <div class="row">
+                            <form class="col s12">
+                              <div class="row">
+                                <div class="input-field col s6">
+                                  <input placeholder="Type a topic here" id="politicalTopicInput" type="text" class="validate">
+                                  <label for="politicalTopicInput">Search Term:</label>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <a class="btn-floating btn-large waves-effect waves-light red addP"><i class="material-icons">add</i></a>
+                        
+                        <div class="pButtonsDiv"></div>
+                    </div>
+
+                </div>
+          </div>
+    </div>
+<!-- YouTube Div -->
+    <div id="youTubeDiv">
+
+
+
+
+    </div>
+
+<!-- Podcast Div -->
+    <div id="podcastDiv">
+
+
+
+    </div>
+
+
+
+
+    
+<script>
+    $(document).ready(function(){
+        $('ul.tabs').tabs('select_tab', 'tab_id');
+    });
+
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+
+    var pTerms = [];
+
+    function makePoliticalButtons() {
+        $(".pButtonsDiv").empty();
+
+        for (var i = 0; i < pTerms.length; i++) {
+            var b = $("<a>");
+            b.addClass("waves-effect waves-light red btn termBtns");
+            b.text(pTerms[i]);
+            $(".pButtonsDiv").append(b);
+        }
+    }
+
+    $(".addP").on("click", function(event) {
+        event.preventDefault();
+
+        var pTerm = $("#politicalTopicInput").val().trim();
+
+        pTerms.push(pTerm);
+
+        makePoliticalButtons();
+
+        $("#politicalTopicInput").val("");
+    });
+
+    var iTerms = [];
+
+    function makeInterestButtons() {
+        $(".iButtonsDiv").empty();
+
+        for (var i = 0; i < iTerms.length; i++) {
+            var b = $("<a>");
+            b.addClass("waves-effect waves-light red btn termBtns");
+            b.text(iTerms[i]);
+            $(".iButtonsDiv").append(b);
+        }
+    }
+
+    $(".addI").on("click", function(event) {
+        event.preventDefault();
+
+        var iTerm = $("#interestTopicInput").val().trim();
+
+        iTerms.push(iTerm);
+
+        makeInterestButtons();
+
+        $("#interestTopicInput").val("");
+    });
+
+</script>
+    
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+</body>
+
+</html>
