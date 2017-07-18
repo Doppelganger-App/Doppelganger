@@ -30,10 +30,6 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-app.use(methodOverride("_method"));
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
 app.use("/", htmlRoutes)
 app.use("/api/", apiRoutes);
 
