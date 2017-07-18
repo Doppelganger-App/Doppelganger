@@ -7,7 +7,7 @@ router.get("/", function(req, res) {
 });
 
 router.get("/dashboard", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/html_routes.html"));
+  res.sendFile(path.join(__dirname, "../public/user_page_design.html"));
 });
 
 module.exports = router;

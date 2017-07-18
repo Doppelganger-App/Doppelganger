@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var bcrypt = require("bcrypt-nodejs");
 var Schema = mongoose.Schema;
 
 var PodcastSchema = new Schema({
@@ -32,10 +33,15 @@ var VideosSchema = new Schema({
 });
 
 var ProfileSchema = new Schema({
-  username: {
+  name: {
     type: String,
     unique: true,
-    required: true
+    required: true,
+    default: "Test"
+  },
+  local: {
+    username: String,
+    password: String
   },
   join_date: {
     type: Date,
@@ -43,11 +49,13 @@ var ProfileSchema = new Schema({
   },
   life_background: {
     type: String,
-    required: true
+    required: true,
+    default: "STEM"
   },
   political_lean: {
     type: String,
-    required: true
+    required: true,
+    default: "left-leaning"
   },
   saved_podcasts: [PodcastSchema],
   saved_videos: [VideosSchema]
@@ -64,6 +72,12 @@ var ProfileSchema = new Schema({
   //   ref: "Articles"
   // }]
 });
+
+ProfileSchema.methods.generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+
 
 var Profile = mongoose.model("Profile", ProfileSchema);
 
