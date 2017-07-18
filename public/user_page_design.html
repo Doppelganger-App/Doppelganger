@@ -128,6 +128,7 @@
         for (var i = 0; i < pTerms.length; i++) {
             var b = $("<a>");
             b.addClass("waves-effect waves-light red btn termBtns");
+            b.attr("data-term", pTerms[i]);
             b.text(pTerms[i]);
             $(".pButtonsDiv").append(b);
         }
@@ -153,6 +154,7 @@
         for (var i = 0; i < iTerms.length; i++) {
             var b = $("<a>");
             b.addClass("waves-effect waves-light red btn termBtns");
+            b.attr("data-term", iTerms[i]);
             b.text(iTerms[i]);
             $(".iButtonsDiv").append(b);
         }
@@ -169,6 +171,26 @@
 
         $("#interestTopicInput").val("");
     });
+    
+    $(document).on("click", ".termBtns", function() {
+        event.preventDefault();
+        $("#podcastDiv").html("");
+        var string = $(this).attr("data-term");
+        console.log(string);
+        //replace spaces with plus
+        var searchTerm = string.replace(/ /g, "+");
+        console.log(searchTerm);
+        //we need to have a variable for genreId (ie for news, science, art, literature, etc.)
+        var queryURL = "https://itunes.apple.com/search?term=" + searchTerm + "&media=podcast&genreId=1477&limit=10";
+        console.log(queryURL);
+        $.ajax({
+            url: queryURL,
+            type: "GET",
+            dataType: "jsonp"
+        }).done(function(response) {
+            console.log(response);
+        });
+    })
 
 </script>
     
