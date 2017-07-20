@@ -1,0 +1,59 @@
+.white-text {
+	font-family: "Jura", sans-serif;
+}
+
+.masthead, .nav-wrapper {
+	font-family: "Days One", sans-serif;
+}
+
+#logoImg {
+	padding:5px;
+}
+
+.divTitles {
+	color:white;
+	font-family: "Jura", sans-serif;
+}
+
+#wrapper {
+	width:90%;
+}
+
+#searchBox {
+	text-align:center;
+	width:60%;
+	margin-left:8%;
+	margin-top: 20px;
+	margin-right:5%;
+	color:black;
+	float:left;
+}
+
+#interests, #politics {
+	color: white;
+	font-family: "Jura", sans-serif;
+}
+
+.instr {
+	font-size:20px;
+}
+
+.pButtonsDiv, .iButtonsDiv {
+	margin:20px;
+}
+
+#savedDiv {
+	width:20%;
+	float:right;
+	margin-top:20px;
+	margin-right:3%;
+}
+
+.links {
+	font-color:white;
+}
+
+.savedList {
+	font-family: "Days One", sans-serif;
+}
+
