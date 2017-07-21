@@ -1,9 +1,11 @@
 .white-text {
 	font-family: "Jura", sans-serif;
+	color:black;
 }
 
-.masthead, .nav-wrapper {
+.masthead, .nav-wrapper, .title {
 	font-family: "Days One", sans-serif;
+	color:black;
 }
 
 #logoImg {
@@ -11,7 +13,7 @@
 }
 
 .divTitles {
-	color:white;
+	color:black;
 	font-family: "Jura", sans-serif;
 }
 
@@ -30,7 +32,7 @@
 }
 
 #interests, #politics {
-	color: white;
+	color: black;
 	font-family: "Jura", sans-serif;
 }
 
@@ -50,7 +52,7 @@
 }
 
 .links {
-	font-color:white;
+	font-color:black;
 }
 
 .savedList {
@@ -59,6 +61,28 @@
 
 #youTubeDiv {
 	float:left;
-	color:white;
+	color:black;
+	width:60%;
+	margin-left:8%;
+	margin-right:5%;
 }
 
+.resultsDiv {
+	border: 1px solid red;
+	margin:5px;
+	padding:5px;
+}
+
+.description {
+	font-family: "Jura", sans-serif;
+}
+
+.url {
+	font-family: "Jura", sans-serif;
+	font-size:30px;
+}
+
+.saveBtn {
+	margin-left:37%;
+	margin-right:37%;
+}
