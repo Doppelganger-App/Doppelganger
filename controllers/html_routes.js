@@ -3,11 +3,15 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/index_design.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 router.get("/register", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/signup.html"));
+});
+
+router.get("/login", function(req, res) {
+	res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
 router.get("/dashboard", isLoggedIn, function(req, res) {
