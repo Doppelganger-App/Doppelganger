@@ -8,7 +8,7 @@ var Header = React.createClass({
 	    <nav>
 	        <div className="nav-wrapper">
 	            <ul id="nav-mobile" className="left">
-	                <li><a href="#" className="brand-logo masthead"><img src="assets/images/head_03.png" id="logoImg" alt="head" /></a></li>
+	                <li><a href="#" className="brand-logo masthead"><img src="assets/images/blackbkgdlogo.gif" id="logoImg" alt="head" /></a></li>
 	                <li id="title"><a>Doppelgänger</a></li>
 	            </ul>	            
 	            <ul id="nav-mobile" className="right">
