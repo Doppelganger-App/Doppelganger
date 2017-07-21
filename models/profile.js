@@ -35,12 +35,12 @@ var VideosSchema = new Schema({
 var ProfileSchema = new Schema({
   name: {
     type: String,
-    unique: true,
+    // unique: true,
     required: true,
     default: "Test"
   },
   local: {
-    username: String,
+    email: String,
     password: String
   },
   join_date: {
@@ -77,7 +77,9 @@ ProfileSchema.methods.generateHash = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-
+ProfileSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.local.password);
+};
 
 var Profile = mongoose.model("Profile", ProfileSchema);
 

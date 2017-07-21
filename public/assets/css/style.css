@@ -38,8 +38,8 @@
 	font-size:20px;
 }
 
-.pButtonsDiv, .iButtonsDiv {
-	margin:20px;
+.termBtns {
+	margin:5px;
 }
 
 #savedDiv {
@@ -55,5 +55,10 @@
 
 .savedList {
 	font-family: "Days One", sans-serif;
+}
+
+#youTubeDiv {
+	float:left;
+	color:white;
 }
 

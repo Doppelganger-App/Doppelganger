@@ -14,9 +14,10 @@
 <body style="background-color: black;">
     <nav style="background-color: black;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo masthead"><img src="./assets/images/head_03.png" style="width: 60px" id="logoImg" alt="head"> Doppelgänger</a>
+            <a href="/" class="brand-logo masthead"><img src="./assets/images/head_03.png" style="width: 60px" id="logoImg" alt="head"> Doppelgänger</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="collapsible.html">Welcome, User</a></li>
+                <li id="currentUserName"></li>
+                <li><a href="/user/logout">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -54,7 +55,7 @@
                   </ul>
                 </div>
                     <div id="interests" class="col s12">
-                    <p class="instr">Type a search term below (e.g. 'evolution', 'JavaScript', 'poetry', 'film').</p>
+                    <p class="instr">Type a search term below, or click one of the suggested topics.</p>
                         <div class="row">
                             <form class="col s12">
                               <div class="row">
@@ -72,7 +73,7 @@
                     </div>
 
                     <div id="politics" class="col s12">
-                        <p class="instr">Type a search term below (e.g. 'environment', 'socialism', 'constitution', 'military').</p>
+                        <p class="instr">Type a search term below, or click one of the suggested topics.</p>
                         <div class="row">
                             <form class="col s12">
                               <div class="row">
@@ -85,6 +86,7 @@
                         </div>
 
                         <a class="btn-floating btn-large waves-effect waves-light red addP"><i class="material-icons">add</i></a>
+                        <br>
                         
                         <div class="pButtonsDiv"></div>
                     </div>
@@ -114,13 +116,16 @@
 <script>
     $(document).ready(function(){
         $('ul.tabs').tabs('select_tab', 'tab_id');
+
+        makePoliticalButtons();
+        makeInterestButtons();
     });
 
     $(document).ready(function(){
         $('.collapsible').collapsible();
     });
 
-    var pTerms = [];
+    var pTerms = ["constitution", "socialism", "environment", "military"];
 
     function makePoliticalButtons() {
         $(".pButtonsDiv").empty();
@@ -131,6 +136,7 @@
             b.attr("data-term", pTerms[i]);
             b.text(pTerms[i]);
             $(".pButtonsDiv").append(b);
+            console.log(b);
         }
     }
 
@@ -138,15 +144,12 @@
         event.preventDefault();
 
         var pTerm = $("#politicalTopicInput").val().trim();
-
         pTerms.push(pTerm);
-
         makePoliticalButtons();
-
         $("#politicalTopicInput").val("");
     });
 
-    var iTerms = [];
+    var iTerms = ["evolution", "JavaScript", "poetry", "film"];
 
     function makeInterestButtons() {
         $(".iButtonsDiv").empty();
@@ -164,38 +167,100 @@
         event.preventDefault();
 
         var iTerm = $("#interestTopicInput").val().trim();
-
         iTerms.push(iTerm);
-
         makeInterestButtons();
-
         $("#interestTopicInput").val("");
     });
+
+    // function youtubeApiCall(){
+    //     var q = $(".termBtns").attr("data-term");
+    //     console.log(q);
+    //     var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
+    //     var queryURL = 'https://www.googleapis.com/youtube/v3/search?q=' + q + '&key=' + apiKey + '&fields=items&part=snippet';
+    //  $.ajax({
+    //      type: "GET",
+    //      url: queryURL,
+    //      dataType: 'jsonp'
+    //  })
+    // .done(function(data) {
+    //     console.log(data); 
+    //     //console.log(data.items[0].snippet.thumbnails.default.url);
+    //     for (var i = 0; i < 5; i++) {
+    //         // var thumbnail = $("<video>");
+    //         // thumbnail.addClass("responsive-video");
+    //         // var source = $("<source>");
+    //         // source.attr("src", data.items[i].snippet.thumbnails.default.url);
+    //         // thumbnail.append(source);
+    //         // $("#youTubeDiv").append(thumbnail);
+    //         $("#youTubeDiv").append(data.items[i].snippet.title);
+    //         $("#youTubeDiv").append(data.items[i].snippet.thumbnails.default.url);
+    //     }      
+    //  });
+    // }
     
-    $(document).on("click", ".termBtns", function() {
+    $(document).on("click", ".termBtns", function(event) {
         event.preventDefault();
         $("#podcastDiv").html("");
-        var string = $(this).attr("data-term");
-        console.log(string);
-        //replace spaces with plus
-        var searchTerm = string.replace(/ /g, "+");
+        $("#youTubeDiv").html("");
+        
+        var q = $(this).attr("data-term");
+        console.log(q);
+        var searchTerm = q.replace(/ /g, "+");
         console.log(searchTerm);
-        //we need to have a variable for genreId (ie for news, science, art, literature, etc.)
-        var queryURL = "https://itunes.apple.com/search?term=" + searchTerm + "&media=podcast&genreId=1477&limit=10";
-        console.log(queryURL);
-        $.ajax({
-            url: queryURL,
-            type: "GET",
-            dataType: "jsonp"
-        }).done(function(response) {
-            console.log(response);
-        });
-    })
+        var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
+        var queryURL = 'https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&q=' + searchTerm + '&key=' + apiKey + '&fields=items&part=snippet';
+     $.ajax({
+         type: "GET",
+         url: queryURL,
+         dataType: 'jsonp'
+     })
+    .done(function(data) {
+        console.log(data); 
 
-</script>
+        for (var i = 0; i < 5; i++) {
+            var title = data.items[i].snippet.title;
+            var description = data.items[i].snippet.description;
+            var url ="https://www.youtube.com/watch?v=" + data.items[i].id;
+            $("#youTubeDiv").append(title + "<br>");
+            $("#youTubeDiv").append(description + "<br>");
+            $("#youTubeDiv").append(url + "<br>" + "<br>");
+            
+        }
+    });    
+});
+        
+
+    $('#currentUserName').text("Welcome, " + localStorage.getItem("username"));
+
     
+</script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 </body>
 
+<!-- // var string = $(this).attr("data-term");
+        // console.log(string);
+        // //replace spaces with plus
+        // var searchTerm = string.replace(/ /g, "+");
+        // console.log(searchTerm);
+        // //we need to have a variable for genreId (ie for news, science, art, literature, etc.)
+        // var queryURL = "https://itunes.apple.com/search?term=" + searchTerm + "&media=podcast&genreId=1477&limit=10";
+        // console.log(queryURL);
+        // $.ajax({
+        //     url: queryURL,
+        //     type: "GET",
+        //     dataType: "jsonp"
+        // }).done(function(response) {
+        //     console.log(response);
+        // });
+
+ -->
 </html>
+
+
+
+
+
+
+
+
