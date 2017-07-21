@@ -172,11 +172,43 @@
         $("#interestTopicInput").val("");
     });
 
-    function youtubeApiCall(){
-        var q = $(".termBtns").attr("data-term");
+    // function youtubeApiCall(){
+    //     var q = $(".termBtns").attr("data-term");
+    //     console.log(q);
+    //     var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
+    //     var queryURL = 'https://www.googleapis.com/youtube/v3/search?q=' + q + '&key=' + apiKey + '&fields=items&part=snippet';
+    //  $.ajax({
+    //      type: "GET",
+    //      url: queryURL,
+    //      dataType: 'jsonp'
+    //  })
+    // .done(function(data) {
+    //     console.log(data); 
+    //     //console.log(data.items[0].snippet.thumbnails.default.url);
+    //     for (var i = 0; i < 5; i++) {
+    //         // var thumbnail = $("<video>");
+    //         // thumbnail.addClass("responsive-video");
+    //         // var source = $("<source>");
+    //         // source.attr("src", data.items[i].snippet.thumbnails.default.url);
+    //         // thumbnail.append(source);
+    //         // $("#youTubeDiv").append(thumbnail);
+    //         $("#youTubeDiv").append(data.items[i].snippet.title);
+    //         $("#youTubeDiv").append(data.items[i].snippet.thumbnails.default.url);
+    //     }      
+    //  });
+    // }
+    
+    $(document).on("click", ".termBtns", function(event) {
+        event.preventDefault();
+        $("#podcastDiv").html("");
+        $("#youTubeDiv").html("");
+        
+        var q = $(this).attr("data-term");
         console.log(q);
+        var searchTerm = q.replace(/ /g, "+");
+        console.log(searchTerm);
         var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
-        var queryURL = 'https://www.googleapis.com/youtube/v3/search?q=' + q + '&key=' + apiKey + '&fields=items&part=snippet';
+        var queryURL = 'https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&q=' + searchTerm + '&key=' + apiKey + '&fields=items&part=snippet';
      $.ajax({
          type: "GET",
          url: queryURL,
@@ -184,25 +216,29 @@
      })
     .done(function(data) {
         console.log(data); 
-        //console.log(data.items[0].snippet.thumbnails.default.url);
+
         for (var i = 0; i < 5; i++) {
-            // var thumbnail = $("<video>");
-            // thumbnail.addClass("responsive-video");
-            // var source = $("<source>");
-            // source.attr("src", data.items[i].snippet.thumbnails.default.url);
-            // thumbnail.append(source);
-            // $("#youTubeDiv").append(thumbnail);
-            $("#youTubeDiv").append(data.items[i].snippet.title);
-            $("#youTubeDiv").append(data.items[i].snippet.thumbnails.default.url);
-        }      
-     });
-    }
+            var title = data.items[i].snippet.title;
+            var description = data.items[i].snippet.description;
+            var url ="https://www.youtube.com/watch?v=" + data.items[i].id;
+            $("#youTubeDiv").append(title + "<br>");
+            $("#youTubeDiv").append(description + "<br>");
+            $("#youTubeDiv").append(url + "<br>" + "<br>");
+            
+        }
+    });    
+});
+        
+
+    $('#currentUserName').text("Welcome, " + localStorage.getItem("username"));
+
     
-    $(document).on("click", ".termBtns", function(event) {
-        event.preventDefault();
-        $("#podcastDiv").html("");
-        $("#youTubeDiv").html("");
-        // var string = $(this).attr("data-term");
+</script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+</body>
+
+<!-- // var string = $(this).attr("data-term");
         // console.log(string);
         // //replace spaces with plus
         // var searchTerm = string.replace(/ /g, "+");
@@ -218,15 +254,13 @@
         //     console.log(response);
         // });
 
-        youtubeApiCall();
-    });
-
-    $('#currentUserName').text("Welcome, " + localStorage.getItem("username"));
-
-    
-</script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-</body>
-
+ -->
 </html>
+
+
+
+
+
+
+
+
