@@ -2,20 +2,20 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcrypt-nodejs");
 var Schema = mongoose.Schema;
 
-var PodcastSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  link: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
+// var PodcastSchema = new Schema({
+//   title: {
+//     type: String,
+//     required: true
+//   },
+//   link: {
+//     type: String,
+//     required: true
+//   },
+//   date: {
+//     type: Date,
+//     default: Date.now
+//   }
+// });
 
 var VideosSchema = new Schema({
   title: {
@@ -57,7 +57,6 @@ var ProfileSchema = new Schema({
     required: true,
     default: "left-leaning"
   },
-  saved_podcasts: [PodcastSchema],
   saved_videos: [VideosSchema]
   // saved_podcasts: [{
   //   type: Schema.Types.ObjectId,

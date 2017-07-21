@@ -36,9 +36,19 @@ router.post('/check', function(req, res) {
     console.log(doc);
     // res.json(doc);
     if (!doc) {
-      res.json(doc);
+      var newProfile = new Profile();
+      newProfile.name = req.body.username;
+      newProfile.local.email = req.body.email;
+      newProfile.life_background = req.body.background;
+      newProfile.political_lean = req.body.politics;
+
+      newProfile.save(function(err, doc) {
+        if (err) throw err;
+        res.json(doc);
+      })
+      // res.json(doc);
     } else {
-      res.json("Sorry, but that user name is taken!");
+      res.json("Sorry, but you already have an account!");
     }
   });
   // res.json("thanks");
@@ -82,27 +92,31 @@ passport.use('local-signup', new LocalStrategy({
 
   function(req, email, password, done) {
     process.nextTick(function() {
-      //Checking to see if the username is already taken
-      Profile.findOne({ 'local.email' : email }, function(err, user) {
-        if (err) return done(err);
-
-        if (user) {
-          return done(null, false, console.log("signup taken"));
-
-        } else {
-
-          //if there is no user with that username, create the user
-          var newProfile = new Profile();
-          newProfile.local.email = email;
-          newProfile.local.password = newProfile.generateHash(password);
-
-          newProfile.save(function(err, doc) {
-            if (err) throw err;
-            console.log(doc);
-            return done(null, newProfile);
-          });
-        }
+      Profile.findOneandUpdate({ 'local.email': email }, { 'local.password': Profile.generateHash(password) }, function(err, user) {
+        console.log(user);
+        return done(null, user);
       });
+      //Checking to see if the username is already taken
+      // Profile.findOne({ 'local.email' : email }, function(err, user) {
+      //   if (err) return done(err);
+
+      //   if (user) {
+      //     return done(null, false, console.log("signup taken"));
+
+      //   } else {
+
+      //     //if there is no user with that username, create the user
+      //     var newProfile = new Profile();
+      //     newProfile.local.email = email;
+      //     newProfile.local.password = newProfile.generateHash(password);
+
+      //     newProfile.save(function(err, doc) {
+      //       if (err) throw err;
+      //       console.log(doc);
+      //       return done(null, newProfile);
+      //     });
+      //   }
+      // });
     });
   })
 );
