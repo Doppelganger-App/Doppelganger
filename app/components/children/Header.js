@@ -5,15 +5,18 @@ var React = require("react");
 var Header = React.createClass({
 	render: function() {
 	    return (
-	    <nav style="background-color: black;">
+	    <nav>
 	        <div className="nav-wrapper">
-	            <a href="#" className="brand-logo masthead"><img src="public/assets/images/head_03.png" style="width: 60px" id="logoImg" alt="head" />  Doppelgänger</a>
-	            <ul id="nav-mobile" className="right hide-on-med-and-down">
+	            <ul id="nav-mobile" className="left">
+	                <li><a href="#" className="brand-logo masthead"><img src="assets/images/head_03.png" id="logoImg" alt="head" /></a></li>
+	                <li id="title"><a>Doppelgänger</a></li>
+	            </ul>	            
+	            <ul id="nav-mobile" className="right">
 	                <li><a>Login</a></li>
 	            </ul>
 	        </div>
 	    </nav>	
-	    )
+	    );
     }
 });    
 
