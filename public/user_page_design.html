@@ -14,9 +14,10 @@
 <body style="background-color: black;">
     <nav style="background-color: black;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo masthead"><img src="./assets/images/head_03.png" style="width: 60px" id="logoImg" alt="head"> Doppelgänger</a>
+            <a href="/" class="brand-logo masthead"><img src="./assets/images/head_03.png" style="width: 60px" id="logoImg" alt="head"> Doppelgänger</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="collapsible.html">Welcome, User</a></li>
+                <li id="currentUserName"></li>
+                <li><a href="/user/logout">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -219,6 +220,8 @@
 
         youtubeApiCall();
     });
+
+    $('#currentUserName').text("Welcome, " + localStorage.getItem("username"));
 
     
 </script>
