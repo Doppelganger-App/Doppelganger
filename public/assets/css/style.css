@@ -67,6 +67,10 @@
 	margin-right:5%;
 }
 
+#podcastDiv {
+	margin:20px;
+}
+
 .resultsDiv {
 	border: 1px solid red;
 	margin:5px;
@@ -83,8 +87,8 @@
 }
 
 .saveBtn {
-	margin-left:37%;
-	margin-right:37%;
+	margin-left:33%;
+	margin-right:33%;
 }
 
 body, nav {
@@ -111,4 +115,14 @@ img#logoImg {
 
 li#title {
 	margin-left: 40px;
+}
+
+#interests, #politics {
+	margin-top:40px;
+}
+
+.tabs {
+	margin-left:25%;
+	margin-right:25%;
+	width:88%;
 }
