@@ -25,4 +25,12 @@ router.put("/updateprofile", function(req, res) {
   });
 });
 
+router.put("/savevideo/:email", function(req, res) {
+  console.log(req.body);
+  Profile.findOneAndUpdate({ 'local.email': req.params.email }, { $push: { saved_videos: req.body }}, { new: true }, function(err, data) {
+    if (err) throw err;
+    res.json(data);
+  });
+});
+
 module.exports = router;

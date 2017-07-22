@@ -319,6 +319,30 @@ $(document).on("click", ".iBtns", function(event) {
             // $("#youTubeDiv").append(description + "<br>");
             // $("#youTubeDiv").append(url + "<br>" + "<br>");
         }
+
+        $('.saveBtn').on('click', function(event) {
+            event.preventDefault();
+            console.log("inside");
+            var videoTitle = $(this).prev().prev().text();
+            var videoLink = $(this).next().next().attr('href');
+            console.log(videoTitle, videoLink);
+
+            var saveObject = {
+                title: videoTitle,
+                link: videoLink
+            }
+
+            var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
+            console.log(queryUrl);
+
+            $.ajax({
+                type: "PUT",
+                url: queryUrl,
+                data: saveObject
+            }).done(function(data) {
+                console.log(data);
+            });
+        });
     });
 });
 
@@ -376,6 +400,26 @@ $(document).on("click", ".pBtns", function(event) {
 
         $('.saveBtn').on('click', function(event) {
             event.preventDefault();
-        })
+            console.log("inside");
+            var videoTitle = $(this).prev().prev().text();
+            var videoLink = $(this).next().next().attr('href');
+            console.log(videoTitle, videoLink);
+
+            var saveObject = {
+                title: videoTitle,
+                link: videoLink
+            }
+
+            var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
+            console.log(queryUrl);
+
+            $.ajax({
+                type: "PUT",
+                url: queryUrl,
+                data: saveObject
+            }).done(function(data) {
+                console.log(data);
+            });
+        });
     });
 });
