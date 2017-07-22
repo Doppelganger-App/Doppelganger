@@ -373,5 +373,9 @@ $(document).on("click", ".pBtns", function(event) {
             youTubeResults.append("<br>" + "<br>" + "<br>");
             $("#youTubeDiv").append(youTubeResults);
         }
+
+        $('.saveBtn').on('click', function(event) {
+            event.preventDefault();
+        })
     });
 });
