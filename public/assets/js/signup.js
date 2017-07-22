@@ -11,11 +11,14 @@ $(document).ready(function() {
     console.log(userObject);
 
     $.post('/user/check', userObject, function(data) {
-      if (data === "Sorry, but you already have an account!") {
+      if (data) {
         alert(data);
       } else {
-        console.log(data);
-        localStorage.setItem('email', data.local.email);
+        localStorage.setItem('username', userObject.username);
+        localStorage.setItem('email', userObject.email);
+        localStorage.setItem('politics', userObject.politics);
+        localStorage.setItem('background', userObject.background);
+        localStorage.setItem('signup', true);
         $('#signInUser').click();
       }
     });

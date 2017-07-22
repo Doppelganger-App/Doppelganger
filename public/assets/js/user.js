@@ -1,13 +1,55 @@
 $(document).ready(function(){
-        $('ul.tabs').tabs('select_tab', 'tab_id');
+
+    function completeUserProfile() {
+        $('#currentUserName').text("Welcome, " + localStorage.getItem('username'));
+
+        var userObject = {
+            username: localStorage.getItem('username'),
+            email: localStorage.getItem('email'),
+            politics: localStorage.getItem('politics'),
+            background: localStorage.getItem('background')
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/updateprofile",
+            data: userObject
+        }).done(function(data) {
+            console.log(data);
+        });
+    }
+
+    function completeStorage() {
+        var email = localStorage.getItem('email');
+
+        $.get("/api/completestorage/" + email, function(data) {
+            console.log(data);
+            $('#currentUserName').text("Welcome, " + data.name);
+            localStorage.setItem('username', data.name);
+            localStorage.setItem('politics', data.political_lean);
+            localStorage.setItem('background', data.life_background);
+        });
+    }
+
+    if (localStorage.getItem('signup') === "true") {
+        completeUserProfile();
+    } else {
+        completeStorage();
+    }
+
+    //CODE FOR DEALING WITH POLITICAL-LEAN AND LIFE-BACKGROUND GOES HERE :)
+
+    $('ul.tabs').tabs('select_tab', 'tab_id');
 
         makePoliticalButtons();
         makeInterestButtons();
     });
+    // I commented this out because I don't think it's necessary to put document.ready again. I did put the 'collapsible()' function right below.
+    // $(document).ready(function(){
+    //     $('.collapsible').collapsible();
+    // });
 
-    $(document).ready(function(){
-        $('.collapsible').collapsible();
-    });
+    $('.collapsible').collapsible();
 
     var pTerms = ["constitution", "socialism", "environment", "military"];
 
@@ -107,5 +149,5 @@ $(document).ready(function(){
             // $("#youTubeDiv").append(description + "<br>");
             // $("#youTubeDiv").append(url + "<br>" + "<br>");
         }
-    });    
+    });
 });
