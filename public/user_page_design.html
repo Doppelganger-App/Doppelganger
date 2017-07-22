@@ -12,20 +12,58 @@
 </head>
 
 <body style="background-color: white;">
-    <nav style="background-color: black;">
+    <nav>
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo masthead"><img src="./assets/images/blackbkgdlogo.gif" style="width: 60px" id="logoImg" alt="head"> Doppelgänger</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li id="currentUserName" style="color: white;"></li>
-                <li><a href="/user/logout">Logout</a></li>
+            <ul id="nav-mobile" class="left">
+                <li><a href="/" class="brand-logo masthead"><img src="./assets/images/blackbkgdlogo.gif" id="logoImg" alt="head"></a></li>
+                <li id="title"><a href="/">Doppelgänger</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+            <ul id="nav-mobile" class="right">
+                <li id="currentUserName"></li>
+                <li><a href="/user/logout">Log Out</a></li>
             </ul>
         </div>
     </nav>
 
-    <div id="wrapper">
+<div class="container">
+    <div class="row">
 
-<!-- Side Panel w/ saved items and chat groups -->
-        <div id="savedDiv">
+    <!-- Search/Topic Div -->
+        <div class="col 9" id="searchBox">
+            <h4 class="divTitles">Choose the topic.</h4>
+            <div class="row tabTable">
+                <div class="col s12">
+                  <ul class="tabs">
+                    <li class="tab col s3 tabs-fixed-width indyTabs"><a class="active" href="#interests">Interests</a></li>
+                    <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#politics">Politics</a></li>
+                  </ul>
+                </div>
+                    <div id="interests" class="col s12">
+                        <div class="row">
+                            <div class="iButtonsDiv"></div>
+                        </div>
+                    </div>
+
+                    <div id="politics" class="col s12">
+                        <div class="row">
+                            <div class="pButtonsDiv"></div>
+                        </div>
+                    </div>   
+            </div>
+        </div>
+
+        <div class="col 3" id="podcastDiv">
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col s9" id="youTubeDiv">
+        </div>
+    
+        <div class="col s3">
             <h4 class="divTitles">Your Saved Items</h4>
                 <ul class="collapsible savedList" data-collapsible="accordion">
                 <li>
@@ -42,72 +80,17 @@
                 </li>
               </ul>
         </div>
-
-
-    <!-- Search/Topic Div -->
-        <div id="searchBox">
-            <h4 class="divTitles">Choose the topic.</h4>
-            <div class="row tabTable">
-                <div class="col s12">
-                  <ul class="tabs">
-                    <li class="tab col s3 tabs-fixed-width"><a class="active" href="#interests">Interests</a></li>
-                    <li class="tab col s3 tabs-fixed-width"><a href="#politics">Politics</a></li>
-                  </ul>
-                </div>
-                    <div id="interests" class="col s12">
-                    <p class="instr">Type a search term below, or click one of the suggested topics.</p>
-                        <div class="row">
-                            <form class="col s12">
-                              <div class="row">
-                                <div class="input-field col s6">
-                                  <input placeholder="Type a topic here" id="interestTopicInput" type="text" class="validate">
-                                  <label for="interestTopicInput">Search Term:</label>
-                                </div>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <a class="btn-floating btn-large waves-effect waves-light red addI"><i class="material-icons">add</i></a>
-                        
-                        <div class="iButtonsDiv"></div>
-                    </div>
-
-                    <div id="politics" class="col s12">
-                        <p class="instr">Type a search term below, or click one of the suggested topics.</p>
-                        <div class="row">
-                            <form class="col s12">
-                              <div class="row">
-                                <div class="input-field col s6">
-                                  <input placeholder="Type a topic here" id="politicalTopicInput" type="text" class="validate">
-                                  <label for="politicalTopicInput">Search Term:</label>
-                                </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <a class="btn-floating btn-large waves-effect waves-light red addP"><i class="material-icons">add</i></a>
-                        <br>
-                        
-                        <div class="pButtonsDiv"></div>
-                    </div>
-
-                </div>
-          </div>
     </div>
+
+    
+    
+
+
+</div>
 <!-- YouTube Div -->
-    <div id="youTubeDiv">
-
-
-
-
-    </div>
-
+    
 <!-- Podcast Div -->
-    <div id="podcastDiv">
-
-<iframe src="http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1065051273,122415315,568115978,583661711,309787436,259917817,1065050908,1069889359,564302516,563316406,1183123221&wt=playlist&partnerId=&affiliate_id=&at=&ct=" frameborder=0 style="overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px"></iframe>
-
-    </div>
+    
 
 
 
