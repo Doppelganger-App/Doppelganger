@@ -33,4 +33,28 @@ router.put("/savevideo/:email", function(req, res) {
   });
 });
 
+router.put("/savearticle/:email", function(req, res) {
+  console.log(req.body);
+  Profile.findOneAndUpdate({ 'local.email': req.params.email }, { $push: { saved_articles: req.body }}, { new: true }, function(err, data) {
+    if (err) throw err;
+    res.json(data);
+  });
+});
+
+router.put("/deletevideo/:email/:id", function(req, res) {
+  console.log(req.params.id);
+  Profile.findOneAndUpdate({'local.email': req.params.email}, { $pull: { saved_videos: {_id: req.params.id}}}, function(err, doc) {
+    if (err) throw err;
+    res.json("item deleted");
+  });
+});
+
+router.put("/deletearticle/:email/:id", function(req, res) {
+  console.log(req.params.id);
+  Profile.findOneAndUpdate({'local.email': req.params.email}, { $pull: { saved_articles: {_id: req.params.id}}}, function(err, doc) {
+    if (err) throw err;
+    res.json("item deleted");
+  });
+});
+
 module.exports = router;
