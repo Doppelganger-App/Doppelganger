@@ -76,6 +76,8 @@ $(document).ready(function(){
             }
 
         }
+        
+        var newsTerms = ["the new york times", "associated press", "reuters", "entertainment weekly", "cnn", "usa today"];
 
         var widget1 = $("<iframe>");
         widget1.addClass("widget");
@@ -91,6 +93,7 @@ $(document).ready(function(){
 
         makePoliticalButtons();
         makeInterestButtons();
+        makeNewsButtons(newsTerms);
 
         $("#podcastDiv").append(widget1);
         $("#podcastDiv").append("<br>");
@@ -132,6 +135,8 @@ $(document).ready(function(){
 
         }
 
+        var newsTerms = ["the new york times", "associated press", "reuters", "national geographic", "cnn", "new scientist", "usa today"];
+
 
         var widget1 = $("<iframe>");
         widget1.addClass("widget");
@@ -147,6 +152,7 @@ $(document).ready(function(){
 
         makePoliticalButtons();
         makeInterestButtons();
+        makeNewsButtons(newsTerms);
 
         $("#podcastDiv").append(widget1);
         $("#podcastDiv").append("<br>");
@@ -189,7 +195,8 @@ $(document).ready(function(){
 
         }
 
-
+        var newsTerms = ["daily mail", "fortune", "the wall street journal", "breitbart news", "entertainment weekly", "the telegraph"];
+        
         var widget1 = $("<iframe>");
         widget1.addClass("widget");
         widget1.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
@@ -204,6 +211,7 @@ $(document).ready(function(){
 
         makePoliticalButtons();
         makeInterestButtons();
+        makeNewsButtons(newsTerms);
 
         $("#podcastDiv").append(widget1);
         $("#podcastDiv").append("<br>");
@@ -245,6 +253,8 @@ $(document).ready(function(){
 
         }
 
+        var newsTerms = ["daily mail", "fortune", "the wall street journal", "breitbart news", "national geographic", "new scientist", "the telegraph"];
+
         var widget1 = $("<iframe>");
         widget1.addClass("widget");
         widget1.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1065051273,122415315,568115978,583661711,309787436,259917817,1065050908,1069889359,564302516,563316406,1183123221&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
@@ -259,6 +269,7 @@ $(document).ready(function(){
 
         makePoliticalButtons();
         makeInterestButtons();
+        makeNewsButtons(newsTerms);
 
         $("#podcastDiv").append(widget1);
         $("#podcastDiv").append("<br>");
@@ -422,4 +433,66 @@ $(document).on("click", ".pBtns", function(event) {
             });
         });
     });
+});
+
+function makeNewsButtons(terms) {
+    $(".nButtonsDiv").empty();
+
+    for (var i = 0; i < terms.length; i++) {
+        var n = $("<a>");
+        n.addClass("waves-effect waves-light red btn-large termBtns nBtns");
+        n.attr("data-term", terms[i]);
+        n.text(terms[i]);
+        $(".nButtonsDiv").append(n);
+    }
+}
+
+function newsCall (searchTerm) {
+    var apiKey = "09061982c53e479993c7a432a6f05ced";
+    var queryURL = "https://newsapi.org/v1/articles?source=" + searchTerm + "&apiKey=" + apiKey;
+    console.log(queryURL);
+    $.ajax({
+         type: "GET",
+         url: queryURL
+     })
+    .done(function(data) {
+        console.log(data); 
+
+        for (var i = 0; i < 5; i++) {
+            var newsResults = $("<div>");
+            newsResults.addClass("resultsDiv");
+            var title = $("<h2>");
+            title.addClass("title");
+            title.append(data.articles[i].title);
+            var description = $("<h5>");
+            description.addClass("description");
+            description.append(data.articles[i].description);
+            var image = $("<img>");
+            image.addClass("newsImage");
+            image.attr("src", data.articles[i].urlToImage);
+            var url = $("<a>");
+            url.addClass("url");
+            url.attr("href", data.articles[i].url);
+            url.attr("target", "_blank");
+            url.text(data.articles[i].url);
+            var saveBtn = $("<button>");
+            saveBtn.addClass("waves-effect waves-light red btn saveBtn");
+            saveBtn.html("Save for Later");
+            newsResults.append(title);
+            newsResults.append(description);
+            newsResults.append(saveBtn);
+            newsResults.append(image);
+            newsResults.append(url);
+            $("#youTubeDiv").append(newsResults);
+        }
+    });    
+}
+
+$(document).on("click", ".nBtns", function(event) {
+    event.preventDefault();
+    $("#youTubeDiv").html("");
+    //get data-term from button and replace empty spaces with dashes for AJAX call
+    var q = $(this).attr("data-term");
+    var searchTerm = q.replace(/ /g, "-");
+    newsCall(searchTerm);
 });
