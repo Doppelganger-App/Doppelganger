@@ -11,7 +11,7 @@ var Logo = React.createClass({
 		            <img id="logo" src="assets/images/blackbkgdlogo.gif" />
 		          </div>
 		          <div className="col l12 center-align">
-		            <a href="/register" className="chip waves-effect grey grey-text darken-2 lighten-text-2" id="signup">Create your Doppelgänger</a>
+		            <a href="/register" className="chip waves-effect red white-text darken-2 lighten-text-2" id="signup">Create your Doppelgänger</a>
 		          </div>
 		        </div>
 		    </div>

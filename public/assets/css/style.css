@@ -31,7 +31,7 @@
 	float:left;
 }
 
-#interests, #politics {
+#interests, #politics, #news {
 	color: black;
 	font-family: "Jura", sans-serif;
 }
@@ -114,10 +114,10 @@ img#logoImg {
 }
 
 li#title {
-	margin-left: 40px;
+	margin-left: 50px;
 }
 
-#interests, #politics {
+#interests, #politics, #news {
 	margin-top:40px;
 }
 
@@ -125,4 +125,12 @@ li#title {
 	margin-left:25%;
 	margin-right:25%;
 	width:88%;
+}
+
+p {
+	text-align: justify;
+}
+
+img.newsImage {
+	width: 600px;
 }
