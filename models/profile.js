@@ -2,36 +2,6 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcrypt-nodejs");
 var Schema = mongoose.Schema;
 
-// var PodcastSchema = new Schema({
-//   title: {
-//     type: String,
-//     required: true
-//   },
-//   link: {
-//     type: String,
-//     required: true
-//   },
-//   date: {
-//     type: Date,
-//     default: Date.now
-//   }
-// });
-
-var VideosSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  link: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
-
 var ProfileSchema = new Schema({
   name: {
     type: String,
@@ -57,19 +27,14 @@ var ProfileSchema = new Schema({
     required: true,
     default: "left-leaning"
   },
-  // saved_videos: [VideosSchema]
   saved_videos: [{
     title: String,
     link: String
+  }],
+  saved_articles: [{
+    title: String,
+    link: String
   }]
-  // saved_videos: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Videos"
-  // }],
-  // saved_articles: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Articles"
-  // }]
 });
 
 ProfileSchema.methods.generateHash = function(password) {
