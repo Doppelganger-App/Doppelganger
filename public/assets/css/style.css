@@ -3,6 +3,10 @@
 	color:black;
 }
 
+.widget {
+	font-family: "Jura", sans-serif;
+}
+
 .masthead, .nav-wrapper, .title {
 	font-family: "Days One", sans-serif;
 	color:black;
@@ -23,12 +27,7 @@
 
 #searchBox {
 	text-align:center;
-	width:60%;
-	margin-left:8%;
-	margin-top: 20px;
-	margin-right:5%;
 	color:black;
-	float:left;
 }
 
 #interests, #politics, #news {
@@ -42,6 +41,7 @@
 
 .termBtns {
 	margin:5px;
+	border-radius: 15px;
 }
 
 #savedDiv {
@@ -67,14 +67,11 @@
 	margin-right:5%;
 }
 
-#podcastDiv {
-	margin:20px;
-}
-
 .resultsDiv {
-	border: 1px solid red;
-	margin:5px;
-	padding:5px;
+	margin: 20px;
+	margin-top:40px;
+	padding:10px;
+	border-bottom: 5px gray solid;
 }
 
 .description {
@@ -83,7 +80,7 @@
 
 .url {
 	font-family: "Jura", sans-serif;
-	font-size:30px;
+	font-size:20px;
 }
 
 .saveBtn {
@@ -134,3 +131,5 @@ p {
 img.newsImage {
 	width: 600px;
 }
+
+

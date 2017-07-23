@@ -57,11 +57,11 @@ var ProfileSchema = new Schema({
     required: true,
     default: "left-leaning"
   },
-  saved_videos: [VideosSchema]
-  // saved_podcasts: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Podcasts"
-  // }],
+  // saved_videos: [VideosSchema]
+  saved_videos: [{
+    title: String,
+    link: String
+  }]
   // saved_videos: [{
   //   type: Schema.Types.ObjectId,
   //   ref: "Videos"

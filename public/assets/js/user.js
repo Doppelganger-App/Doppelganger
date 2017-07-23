@@ -56,8 +56,9 @@ $(document).ready(function(){
                 b.attr("data-term", lpTerms[i]);
                 b.text(lpTerms[i]);
                 $(".pButtonsDiv").append(b);
-                console.log(b);
+                // console.log(b);
             }
+
         }
 
 
@@ -73,16 +74,19 @@ $(document).ready(function(){
                 b.text(hiTerms[i]);
                 $(".iButtonsDiv").append(b);
             }
+
         }
         
         var newsTerms = ["the new york times", "associated press", "reuters", "entertainment weekly", "cnn", "usa today"];
 
         var widget1 = $("<iframe>");
+        widget1.addClass("widget");
         widget1.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
         widget1.attr("frameborder", 0);
-        widget1.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
+        widget1.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height:300px;border:0px");
 
         var widget2 = $("<iframe>");
+        widget2.addClass("widget");
         widget2.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
         widget2.attr("frameborder", 0);
         widget2.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
@@ -112,8 +116,8 @@ $(document).ready(function(){
                 b.attr("data-term", lpTerms[i]);
                 b.text(lpTerms[i]);
                 $(".pButtonsDiv").append(b);
-                console.log(b);
             }
+
         }
 
         var siTerms = ["biology", "computer science", "psychology", "architecture", "chemistry", "astronomy", "Albert Einstein", "algorithms", "Stephen Hawking", "Occam's razor", "game theory"];
@@ -128,17 +132,20 @@ $(document).ready(function(){
                 b.text(siTerms[i]);
                 $(".iButtonsDiv").append(b);
             }
+
         }
 
         var newsTerms = ["the new york times", "associated press", "reuters", "national geographic", "cnn", "new scientist", "usa today"];
 
 
         var widget1 = $("<iframe>");
+        widget1.addClass("widget");
         widget1.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
         widget1.attr("frameborder", 0);
         widget1.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
 
         var widget2 = $("<iframe>");
+        widget2.addClass("widget");
         widget2.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Feeling Techie&m=podcast&e=podcast&w=250&h=300&ids=617416468,665964031,959773870,326120877,458066753,955198749,842818711,360889910,561470997,305253468&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
         widget2.attr("frameborder", 0);
         widget2.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
@@ -169,8 +176,8 @@ $(document).ready(function(){
                 b.attr("data-term", rpTerms[i]);
                 b.text(rpTerms[i]);
                 $(".pButtonsDiv").append(b);
-                console.log(b);
             }
+
         }
 
         var hiTerms = ["music theory", "poetry", "knitting", "film criticism", "painting", "geography", "literary criticism", "American history", "European history", "philosophy", "Shakespeare"];
@@ -185,16 +192,19 @@ $(document).ready(function(){
                 b.text(hiTerms[i]);
                 $(".iButtonsDiv").append(b);
             }
+
         }
 
         var newsTerms = ["daily mail", "fortune", "the wall street journal", "breitbart news", "entertainment weekly", "the telegraph"];
         
         var widget1 = $("<iframe>");
+        widget1.addClass("widget");
         widget1.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
         widget1.attr("frameborder", 0);
         widget1.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
 
         var widget2 = $("<iframe>");
+        widget2.addClass("widget");
         widget2.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=620967489,418152882,1112194905,1126543994,1155318497,635045292,965293227,209377688,1065050908,699723863&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
         widget2.attr("frameborder", 0);
         widget2.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
@@ -224,9 +234,9 @@ $(document).ready(function(){
                 b.attr("data-term", rpTerms[i]);
                 b.text(rpTerms[i]);
                 $(".pButtonsDiv").append(b);
-                console.log(b);
             }
-        }
+
+    }
 
         var siTerms = ["biology", "computer science", "psychology", "architecture", "chemistry", "astronomy", "Albert Einstein", "algorithms", "Stephen Hawking", "Occam's razor", "game theory"];
 
@@ -240,16 +250,19 @@ $(document).ready(function(){
                 b.text(siTerms[i]);
                 $(".iButtonsDiv").append(b);
             }
+
         }
 
         var newsTerms = ["daily mail", "fortune", "the wall street journal", "breitbart news", "national geographic", "new scientist", "the telegraph"];
 
         var widget1 = $("<iframe>");
+        widget1.addClass("widget");
         widget1.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1065051273,122415315,568115978,583661711,309787436,259917817,1065050908,1069889359,564302516,563316406,1183123221&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
         widget1.attr("frameborder", 0);
         widget1.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
 
         var widget2 = $("<iframe>");
+        widget2.addClass("widget");
         widget2.attr("src", "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Science&m=podcast&e=podcast&w=250&h=300&ids=470623801,73329284,325404506,278981407,169540430,343580439,128859062,350359306,151485804,152249110&wt=playlist&partnerId=&affiliate_id=&at=&ct=");
         widget2.attr("frameborder", 0);
         widget2.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
@@ -317,6 +330,30 @@ $(document).on("click", ".iBtns", function(event) {
             // $("#youTubeDiv").append(description + "<br>");
             // $("#youTubeDiv").append(url + "<br>" + "<br>");
         }
+
+        $('.saveBtn').on('click', function(event) {
+            event.preventDefault();
+            console.log("inside");
+            var videoTitle = $(this).prev().prev().text();
+            var videoLink = $(this).next().next().attr('href');
+            console.log(videoTitle, videoLink);
+
+            var saveObject = {
+                title: videoTitle,
+                link: videoLink
+            }
+
+            var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
+            console.log(queryUrl);
+
+            $.ajax({
+                type: "PUT",
+                url: queryUrl,
+                data: saveObject
+            }).done(function(data) {
+                console.log(data);
+            });
+        });
     });
 });
 
@@ -368,8 +405,33 @@ $(document).on("click", ".pBtns", function(event) {
             youTubeResults.append(saveBtn);
             youTubeResults.append(video);
             youTubeResults.append(url);
+            youTubeResults.append("<br>" + "<br>" + "<br>");
             $("#youTubeDiv").append(youTubeResults);
         }
+
+        $('.saveBtn').on('click', function(event) {
+            event.preventDefault();
+            console.log("inside");
+            var videoTitle = $(this).prev().prev().text();
+            var videoLink = $(this).next().next().attr('href');
+            console.log(videoTitle, videoLink);
+
+            var saveObject = {
+                title: videoTitle,
+                link: videoLink
+            }
+
+            var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
+            console.log(queryUrl);
+
+            $.ajax({
+                type: "PUT",
+                url: queryUrl,
+                data: saveObject
+            }).done(function(data) {
+                console.log(data);
+            });
+        });
     });
 });
 
