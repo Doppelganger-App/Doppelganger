@@ -128,8 +128,8 @@ p {
 	text-align: justify;
 }
 
-img.newsImage {
-	width: 600px;
+button#getUser {
+	margin-left: 10px;
 }
 
 

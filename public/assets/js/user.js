@@ -465,33 +465,38 @@ $(document).ready(function(){
         .done(function(data) {
             console.log(data); 
 
-            for (var i = 0; i < 5; i++) {
-                var newsResults = $("<div>");
-                newsResults.addClass("resultsDiv");
-                var title = $("<h2>");
-                title.addClass("title");
-                title.append(data.articles[i].title);
-                var description = $("<h5>");
-                description.addClass("description");
-                description.append(data.articles[i].description);
-                var image = $("<img>");
-                image.addClass("newsImage");
-                image.attr("src", data.articles[i].urlToImage);
-                var url = $("<a>");
-                url.addClass("url");
-                url.attr("href", data.articles[i].url);
-                url.attr("target", "_blank");
-                url.text(data.articles[i].url);
-                var saveBtn = $("<button>");
-                saveBtn.addClass("waves-effect waves-light red btn saveBtn");
-                saveBtn.html("Save for Later");
-                newsResults.append(title);
-                newsResults.append(description);
-                newsResults.append(saveBtn);
-                newsResults.append(image);
-                newsResults.append(url);
-                $("#youTubeDiv").append(newsResults);
-            }
+        for (var i = 0; i < 5; i++) {
+            var newsResults = $("<div class='card'>");
+            var cardImage = $("<div class='card-image'>");
+            var image = $("<img>");
+            image.attr("id", "resultImg");
+            image.attr("src", data.articles[i].urlToImage); 
+            cardImage.append(image);
+            newsResults.append(cardImage);
+            var cardBody = $("<div class='card-content'>");                       
+            var title = $("<h6>");
+            // title.addClass("title");
+            title.text(data.articles[i].title);
+            var description = $("<p>");
+            description.addClass("description");
+            description.text(data.articles[i].description);
+            cardBody.append(title);
+            cardBody.append(description);
+            var link = $("<div class='card-action'>");
+            var url = $("<a>");
+            url.addClass("url");
+            url.attr("href", data.articles[i].url);
+            url.attr("target", "_blank");
+            url.text("Read the Article");
+            link.append(url);
+            var saveBtn = $("<button>");
+            saveBtn.addClass("waves-effect waves-light red btn saveBtn");
+            saveBtn.html("Save for Later");  
+            link.append(saveBtn);          
+            newsResults.append(cardBody);
+            newsResults.append(link);
+            $("#youTubeDiv").append(newsResults);
+        }
 
             $('.saveBtn').on('click', function(event) {
                 event.preventDefault();
