@@ -66,27 +66,27 @@ $(document).ready(function(){
         
         var lpTerms = ["social justice", "gender equality", "marriage equality", "welfare state", "socialism", "universal health care", "secularism", "environmentalism", "federalism", "pacifism"];
 
-                makePoliticalButtons(lpTerms);
+            makePoliticalButtons(lpTerms);
 
         var hiTerms = ["music theory", "poetry", "knitting", "film criticism", "painting", "geography", "literary criticism", "American history", "European history", "philosophy", "Shakespeare"];
 
-                makeInterestButtons(hiTerms);
+            makeInterestButtons(hiTerms);
         
         var newsTerms = ["the new york times", "associated press", "reuters", "entertainment weekly", "cnn", "usa today"];
 
-                makeNewsButtons(newsTerms);
+            makeNewsButtons(newsTerms);
 
         var bookTerms = ["politics", "interests"];
 
-                makeBookButtons(bookTerms);
+            makeBookButtons(bookTerms);
         
         var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
         
-                makeWidgetOne(widgetOneSource);
+            makeWidgetOne(widgetOneSource);
 
         var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
                 
-                makeWidgetTwo(widgetTwoSource);
+            makeWidgetTwo(widgetTwoSource);
         
     }
 
@@ -146,6 +146,7 @@ $(document).ready(function(){
 
         var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=620967489,418152882,1112194905,1126543994,1155318497,635045292,965293227,209377688,1065050908,699723863&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
+            makeWidgetTwo(widgetTwoSource);
     }
 
 
@@ -393,7 +394,7 @@ function newsCall (searchTerm) {
             link.append(saveBtn);          
             newsResults.append(cardBody);
             newsResults.append(link);
-            
+
         $("#youTubeDiv").append(newsResults);
     }
 
