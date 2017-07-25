@@ -62,9 +62,9 @@
 #youTubeDiv {
 	float:left;
 	color:black;
-	width:60%;
-	margin-left:8%;
+	margin-left:5%;
 	margin-right:5%;
+	margin-top: 20px;
 }
 
 .resultsDiv {
@@ -85,7 +85,6 @@
 
 .saveBtn {
 	margin-left:33%;
-	margin-right:33%;
 }
 
 body, nav {
@@ -132,4 +131,6 @@ button#getUser {
 	margin-left: 10px;
 }
 
-
+li#currentUserName {
+	color: white;
+}

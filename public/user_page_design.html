@@ -20,7 +20,7 @@
                 <li><a href="/about">About</a></li>
             </ul>
             <ul id="nav-mobile" class="right">
-                <li id="currentUserName" style="color: white;"></li>
+                <li id="currentUserName"></li>
                 <li><a href="/user/logout">Log Out</a></li>
             </ul>
         </div>
@@ -32,82 +32,60 @@
     <!-- Search/Topic Div -->
         <div class="col l9" id="searchBox">
             <h4 class="divTitles">Choose the topic.</h4>
-            <div class="row tabTable">
-                <div class="col s12">
-                  <ul class="tabs">
-                    <li class="tab col s3 tabs-fixed-width indyTabs"><a class="active" href="#interests">Interests</a></li>
-                    <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#politics">Politics</a></li>
-                    <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#news">News</a></li>
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col s3 tabs-fixed-width indyTabs"><a class="active" href="#interests">Interests</a></li>
+                <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#politics">Politics</a></li>
+                <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#news">News</a></li>
 
-                  </ul>
-                </div>
-                    <div id="interests" class="col s12">
-                        <div class="row">
-                            <div class="iButtonsDiv"></div>
-                        </div>
-                    </div>
-                    <div id="politics" class="col s12">
-                        <div class="row">
-                            <div class="pButtonsDiv"></div>
-                        </div>
-                    </div>  
-                    <div id="news" class="col s12">
-                        <div class="row">
-                            <div class="nButtonsDiv"></div>
-                        </div>
-                    </div>                     
+              </ul>
             </div>
+            <div id="interests" class="col s12">
+                <div class="iButtonsDiv"></div>
+            </div>
+            <div id="politics" class="col s12">
+                <div class="pButtonsDiv"></div>
+            </div>  
+            <div id="news" class="col s12">
+                <div class="nButtonsDiv"></div>
+            </div>                     
             <div class="row videoResults">
                 <div id="youTubeDiv"></div>  
             </div>      
         </div>
 
-
-
-
-
-
-    
         <div class="col l3">
-                <div id="podcastDiv">
-                    <h4 class="divTitles">Podcasts</h4>
-                </div>
-                <div>
+            <div id="podcastDiv">
+                <h4 class="divTitles">Podcasts</h4>
+            </div>
+            <div>
                 <h4 class="divTitles">Your Saved Items</h4>
                 <ul class="collapsible popout savedList" data-collapsible="accordion">
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">video_library</i>Saved Videos</div>
-                  <div class="collapsible-body links" id="videoList">
-                    <!-- <div class="row">
-                        <div class="col s9">
-                          <h6>Artile title...</h6>
-                          <a><small>go to article</small></a>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">video_library</i>Saved Videos</div>
+                        <div class="collapsible-body links" id="videoList">
+                            <!-- <div class="row">
+                                <div class="col s9">
+                                  <h6>Artile title...</h6>
+                                  <a><small>go to article</small></a>
+                                </div>
+                                <div class="col s3">
+                                    <a class="btn-floating btn waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                </div>
+                            </div>
+                            <hr> -->
                         </div>
-                        <div class="col s3">
-                            <a class="btn-floating btn waves-effect waves-light red"><i class="material-icons">delete</i></a>
-                        </div>
-                    </div>
-                    <hr> -->
-                  </div>
-                </li>
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">library_books</i>Saved Articles</div>
-                  <div class="collapsible-body links" id="articleList"></div>
-                </li>
-              </ul>
-              </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">library_books</i>Saved Articles</div>
+                        <div class="collapsible-body links" id="articleList"></div>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </div>
 </div>
-<!-- YouTube Div -->
-    
-<!-- Podcast Div -->
-    
-
-
-
-
     
 <!-- <script>
     $(document).ready(function(){

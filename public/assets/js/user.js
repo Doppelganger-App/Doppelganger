@@ -319,35 +319,38 @@ $(document).ready(function(){
             console.log(data); 
 
             for (var i = 0; i < 5; i++) {
-                var youTubeResults = $("<div>");
-                youTubeResults.addClass("resultsDiv");
-                var title = $("<h2>");
-                title.addClass("title");
-                title.append(data.items[i].snippet.title);
-                var description = $("<h5>");
-                description.addClass("description");
-                description.append(data.items[i].snippet.description);
+                var youTubeResults = $("<div class='card'>");
+                var cardVideo = $("<div class='card-image'>");
                 var video = $("<iframe>");
                 video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
                 video.attr("frameborder", "0");
                 video.attr("width", "100%");
-                video.attr("height", "400")
+                video.attr("height", "400");                
+                cardVideo.append(video);
+                var cardBody = $("<div class='card-content'>");
+                var title = $("<h6>");
+                title.text(data.items[i].snippet.title);
+                var description = $("<p>");
+                description.addClass("description");
+                description.text(data.items[i].snippet.description);
+                cardBody.append(title);
+                cardBody.append(description);
+                var link = $("<div class='card-action'>");
                 var url = $("<a>");
                 url.addClass("url");
-                url.append("https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
                 url.attr("href", "https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
-                url.attr("target", "_blank");
+                url.attr("target", "_blank");                
+                url.append("https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
+                url.text("Watch the Video");
+                link.append(url);
                 var saveBtn = $("<button>");
                 saveBtn.addClass("waves-effect waves-light red btn saveBtn");
                 saveBtn.html("Save for Later");
-                youTubeResults.append(title);
-                youTubeResults.append(description);
-                youTubeResults.append(saveBtn);
-                youTubeResults.append(video);
-                youTubeResults.append(url);
+                link.append(saveBtn);
+                youTubeResults.append(cardVideo);
+                youTubeResults.append(cardBody);
+                youTubeResults.append(link);
                 $("#youTubeDiv").append(youTubeResults);
-                // $("#youTubeDiv").append(description + "<br>");
-                // $("#youTubeDiv").append(url + "<br>" + "<br>");
             }
 
             $('.saveBtn').on('click', function(event) {
@@ -392,33 +395,37 @@ $(document).ready(function(){
             console.log(data); 
 
             for (var i = 0; i < 5; i++) {
-                var youTubeResults = $("<div>");
-                youTubeResults.addClass("resultsDiv");
-                var title = $("<h2>");
-                title.addClass("title");
-                title.append(data.items[i].snippet.title);
-                var description = $("<h5>");
-                description.addClass("description");
-                description.append(data.items[i].snippet.description);
+                var youTubeResults = $("<div class='card'>");
+                var cardVideo = $("<div class='card-image'>");
                 var video = $("<iframe>");
                 video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
                 video.attr("frameborder", "0");
                 video.attr("width", "100%");
-                video.attr("height", "400")
+                video.attr("height", "400");                
+                cardVideo.append(video);
+                var cardBody = $("<div class='card-content'>");
+                var title = $("<h6>");
+                title.text(data.items[i].snippet.title);
+                var description = $("<p>");
+                description.addClass("description");
+                description.text(data.items[i].snippet.description);
+                cardBody.append(title);
+                cardBody.append(description);
+                var link = $("<div class='card-action'>");
                 var url = $("<a>");
                 url.addClass("url");
-                url.append("https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
                 url.attr("href", "https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
-                url.attr("target", "_blank");
+                url.attr("target", "_blank");                
+                url.append("https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
+                url.text("Watch the Video");
+                link.append(url);
                 var saveBtn = $("<button>");
                 saveBtn.addClass("waves-effect waves-light red btn saveBtn");
                 saveBtn.html("Save for Later");
-                youTubeResults.append(title);
-                youTubeResults.append(description);
-                youTubeResults.append(saveBtn);
-                youTubeResults.append(video);
-                youTubeResults.append(url);
-                youTubeResults.append("<br>" + "<br>" + "<br>");
+                link.append(saveBtn);
+                youTubeResults.append(cardVideo);
+                youTubeResults.append(cardBody);
+                youTubeResults.append(link);
                 $("#youTubeDiv").append(youTubeResults);
             }
 
@@ -475,7 +482,6 @@ $(document).ready(function(){
             newsResults.append(cardImage);
             var cardBody = $("<div class='card-content'>");                       
             var title = $("<h6>");
-            // title.addClass("title");
             title.text(data.articles[i].title);
             var description = $("<p>");
             description.addClass("description");
