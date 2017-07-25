@@ -154,7 +154,7 @@ $(document).ready(function(){
 
         }
 
-        var newsTerms = ["the new york times", "associated press", "reuters", "national geographic", "cnn", "new scientist", "usa today"];
+        var newsTerms = ["the new york times", "associated press", "reuters", "national geographic", "cnn", "new scientist", "usa today", "hacker news", "national geographic", "new scientist", "recode", "the verge"];
 
 
         var widget1 = $("<iframe>");
@@ -272,7 +272,7 @@ $(document).ready(function(){
 
         }
 
-        var newsTerms = ["daily mail", "fortune", "the wall street journal", "breitbart news", "national geographic", "new scientist", "the telegraph"];
+        var newsTerms = ["daily mail", "fortune", "the wall street journal", "breitbart news", "national geographic", "new scientist", "the telegraph", "hacker news", "national geographic", "new scientist", "recode", "the verge"];
 
         var widget1 = $("<iframe>");
         widget1.addClass("widget");
@@ -344,7 +344,7 @@ $(document).ready(function(){
                 url.text("Watch the Video");
                 link.append(url);
                 var saveBtn = $("<button>");
-                saveBtn.addClass("waves-effect waves-light red btn saveBtn");
+                saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
                 saveBtn.html("Save for Later");
                 link.append(saveBtn);
                 youTubeResults.append(cardVideo);
@@ -496,7 +496,7 @@ $(document).ready(function(){
             url.text("Read the Article");
             link.append(url);
             var saveBtn = $("<button>");
-            saveBtn.addClass("waves-effect waves-light red btn saveBtn");
+            saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
             saveBtn.html("Save for Later");  
             link.append(saveBtn);          
             newsResults.append(cardBody);
