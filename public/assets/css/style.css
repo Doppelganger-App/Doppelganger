@@ -67,6 +67,10 @@
 	margin-top: 20px;
 }
 
+.bookSearch {
+	border-radius: 15px;
+}
+
 .resultsDiv {
 	margin: 20px;
 	margin-top:40px;
