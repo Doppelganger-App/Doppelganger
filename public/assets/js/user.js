@@ -75,10 +75,6 @@ $(document).ready(function(){
         var newsTerms = ["the new york times", "associated press", "reuters", "entertainment weekly", "cnn", "usa today"];
 
             makeNewsButtons(newsTerms);
-
-        var bookTerms = ["politics", "interests"];
-
-            makeBookButtons(bookTerms);
         
         var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
         
@@ -106,10 +102,6 @@ $(document).ready(function(){
         
             makeNewsButtons(newsTerms);
 
-        var bookTerms = ["politics", "interests"];
-
-            makeBookButtons(bookTerms);
-
         var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetOne(widgetOneSource);
@@ -135,10 +127,6 @@ $(document).ready(function(){
         var newsTerms = ["daily mail", "fortune", "the wall street journal", "breitbart news", "entertainment weekly", "the telegraph"];
 
             makeNewsButtons(newsTerms);
-        
-        var bookTerms = ["politics", "interests"];
-
-            makeBookButtons(bookTerms);
 
         var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
@@ -164,10 +152,6 @@ $(document).ready(function(){
         var newsTerms = ["daily mail", "fortune", "the wall street journal", "breitbart news", "national geographic", "new scientist", "the telegraph", "hacker news", "national geographic", "new scientist", "recode", "the verge"];
         
             makeNewsButtons(newsTerms);
-
-        var bookTerms = ["politics", "interests"];
-
-            makeBookButtons(bookTerms);
 
         var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1065051273,122415315,568115978,583661711,309787436,259917817,1065050908,1069889359,564302516,563316406,1183123221&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
@@ -425,6 +409,69 @@ $(document).on("click", ".nBtns", function(event) {
     var q = $(this).attr("data-term");
     var searchTerm = q.replace(/ /g, "-");
     newsCall(searchTerm);
+});
+
+
+//book user search
+$(document).on("click", ".bookSearch", function(event) {
+    // var apiKey = "AIzaSyDBRP2OMcVvnzfqi8HZ2HizlEv5c__RMDg";
+    var q = $("#bookTerm").val().trim();
+    console.log(q);
+    var searchTerm = q.replace(/ /g, "+");
+    var queryURL = "https://www.googleapis.com/books/v1/volumes?q="+ searchTerm;
+
+    $.ajax({
+         type: "GET",
+         url: queryURL
+     })
+    .done(function(data) {
+        console.log(data); 
+
+        for (var i = 0; i < 5; i++) {
+
+        var bookResults = $("<div class='card'>");
+        var cardImage = $("<div class='card-image'>");
+        var image = $("<img>");
+            image.attr("id", "resultImg");
+            image.attr("src", data.items[i].volumeInfo.imageLinks.thumbnail); 
+            cardImage.append(image);
+            bookResults.append(cardImage);
+
+        var cardBody = $("<div class='card-content'>");  
+
+        var title = $("<h6>");
+            title.text(data.items[i].volumeInfo.title);
+
+        var description = $("<p>");
+            description.addClass("description");
+            description.text("By " + data.items[i].volumeInfo.authors[0]);
+            cardBody.append(title);
+            cardBody.append(description);
+
+        var link = $("<div class='card-action'>");
+
+        var url = $("<a>");
+            url.addClass("url");
+            url.attr("href", data.items[i].volumeInfo.previewLink);
+            url.attr("target", "_blank");
+            url.text("Preview the Book");
+            link.append(url);
+
+        var saveBtn = $("<button>");
+            saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
+            saveBtn.html("Save for Later");  
+            link.append(saveBtn);          
+            bookResults.append(cardBody);
+            bookResults.append(link);
+
+        $("#youTubeDiv").html(bookResults);
+
+    }
+
+
+    $(".bookSearch").empty();
+});
+
 });
 
 
