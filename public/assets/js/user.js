@@ -681,4 +681,7 @@ function removeItem(query) {
     });
 }
 
+//side-navbar on small screen
+$(".button-collapse").sideNav();
+
 });

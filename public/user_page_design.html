@@ -12,20 +12,25 @@
 </head>
 
 <body style="background-color: white;">
-    <nav>
-        <div class="nav-wrapper">
-            <ul id="nav-mobile" class="left">
-                <li><a href="/" class="brand-logo masthead"><img src="./assets/images/blackbkgdlogo.gif" id="logoImg" alt="head"></a></li>
-                <li id="title"><a href="/">Doppelgänger</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-            <ul id="nav-mobile" class="right">
-                <li id="currentUserName"></li>
-                <li><a href="/user/logout">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
-
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a href="/" class="brand-logo masthead"><img src="assets/images/blackbkgdlogo.gif" id="logoImg" alt="head" /></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li id="title"><a href="/">Doppelgänger</a></li> 
+                    <li><a href="/about">About</a></li>
+                </ul>               
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/user/logout">Log Out</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="/user/logout">Log Out</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="#podcast">Podcasts</a></li>
+                    <li><a href="#savedItems">Your Saved Items</a></li>
+                </ul>
+            </div>
+        </nav>  
 <div class="container">
     <div class="row">
 
