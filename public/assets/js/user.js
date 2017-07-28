@@ -167,6 +167,7 @@ $(document).ready(function(){
     }
 
 
+
     //youTube API query for interest categories
     $(document).on("click", ".iBtns", function(event) {
         event.preventDefault();
@@ -229,6 +230,40 @@ $(document).ready(function(){
 
                 $("#youTubeDiv").append(youTubeResults);
             }
+
+//youTube API query for interest categories
+$(document).on("click", ".iBtns", function(event) {
+    event.preventDefault();
+    $("#youTubeDiv").html("");
+    
+    var q = $(this).attr("data-term");
+    var searchTerm = q.replace(/ /g, "+");
+    console.log(searchTerm);
+    var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
+    var queryURL = 'https://www.googleapis.com/youtube/v3/search?q=' + searchTerm + '&key=' + apiKey + '&fields=items&part=snippet';
+    console.log(queryURL);
+
+     $.ajax({
+         type: "GET",
+         url: queryURL,
+         dataType: 'jsonp'
+     })
+    .done(function(data) {
+        console.log(data); 
+
+        for (var i = 0; i < 5; i++) {
+
+            var youTubeResults = $("<div class='card hoverable'>");
+            var cardVideo = $("<div class='card-image'>");
+            var video = $("<iframe>");
+                video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
+                video.attr("frameborder", "0");
+                video.attr("width", "100%");
+                video.attr("height", "400");                
+                cardVideo.append(video);
+            
+            var cardBody = $("<div class='card-content'>");
+
 
             $('.saveBtn').on('click', function(event) {
                 event.preventDefault();
@@ -347,6 +382,7 @@ $(document).ready(function(){
             console.log(data); 
 
         for (var i = 0; i < 5; i++) {
+
             var newsResults = $("<div class='card'>");
             var cardImage = $("<div class='card-image'>");
             var image = $("<img>");
@@ -354,6 +390,16 @@ $(document).ready(function(){
                 image.attr("src", data.articles[i].urlToImage); 
                 cardImage.append(image);
                 newsResults.append(cardImage);
+
+            var youTubeResults = $("<div class='card hoverable'>");
+            var cardVideo = $("<div class='card-image'>");
+            var video = $("<iframe>");
+                video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
+                video.attr("frameborder", "0");
+                video.attr("width", "100%");
+                video.attr("height", "400");                
+                cardVideo.append(video);
+
 
             var cardBody = $("<div class='card-content'>");  
 
@@ -400,9 +446,61 @@ $(document).ready(function(){
                 var queryUrl = "/api/savearticle/" + localStorage.getItem('email');
                 console.log(queryUrl);
 
+
                 saveItem(queryUrl, saveObject, "Article");
             });
         });    
+
+//getting news API query
+function newsCall (searchTerm) {
+    var apiKey = "09061982c53e479993c7a432a6f05ced";
+    var queryURL = "https://newsapi.org/v1/articles?source=" + searchTerm + "&apiKey=" + apiKey;
+    console.log(queryURL);
+    $.ajax({
+         type: "GET",
+         url: queryURL
+     })
+    .done(function(data) {
+        console.log(data); 
+
+    for (var i = 0; i < 5; i++) {
+        var newsResults = $("<div class='card hoverable'>");
+        var cardImage = $("<div class='card-image'>");
+        var image = $("<img>");
+            image.attr("id", "resultImg");
+            image.attr("src", data.articles[i].urlToImage); 
+            cardImage.append(image);
+            newsResults.append(cardImage);
+
+        var cardBody = $("<div class='card-content'>");  
+
+        var title = $("<h6>");
+            title.text(data.articles[i].title);
+
+        var description = $("<p>");
+            description.addClass("description");
+            description.text(data.articles[i].description);
+            cardBody.append(title);
+            cardBody.append(description);
+
+        var link = $("<div class='card-action'>");
+
+        var url = $("<a>");
+            url.addClass("url");
+            url.attr("href", data.articles[i].url);
+            url.attr("target", "_blank");
+            url.text("Read the Article");
+            link.append(url);
+
+        var saveBtn = $("<button>");
+            saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
+            saveBtn.html("Save for Later");  
+            link.append(saveBtn);          
+            newsResults.append(cardBody);
+            newsResults.append(link);
+
+        $("#youTubeDiv").append(newsResults);
+
     }
 
     $(document).on("click", ".nBtns", function(event) {
@@ -687,4 +785,6 @@ function removeItem(query) {
 //side-navbar on small screen
 $(".button-collapse").sideNav();
 
+//scrollspy for podcasts and saved items on smaller screens
+$('.scrollspy').scrollSpy();
 });
