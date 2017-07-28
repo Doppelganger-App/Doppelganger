@@ -186,7 +186,7 @@ $(document).on("click", ".iBtns", function(event) {
 
         for (var i = 0; i < 5; i++) {
 
-            var youTubeResults = $("<div class='card'>");
+            var youTubeResults = $("<div class='card hoverable'>");
             var cardVideo = $("<div class='card-image'>");
             var video = $("<iframe>");
                 video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
@@ -270,7 +270,7 @@ $(document).on("click", ".pBtns", function(event) {
         console.log(data); 
 
         for (var i = 0; i < 5; i++) {
-            var youTubeResults = $("<div class='card'>");
+            var youTubeResults = $("<div class='card hoverable'>");
             var cardVideo = $("<div class='card-image'>");
             var video = $("<iframe>");
                 video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
@@ -344,7 +344,7 @@ function newsCall (searchTerm) {
         console.log(data); 
 
     for (var i = 0; i < 5; i++) {
-        var newsResults = $("<div class='card'>");
+        var newsResults = $("<div class='card hoverable'>");
         var cardImage = $("<div class='card-image'>");
         var image = $("<img>");
             image.attr("id", "resultImg");
@@ -684,4 +684,6 @@ function removeItem(query) {
 //side-navbar on small screen
 $(".button-collapse").sideNav();
 
+//scrollspy for podcasts and saved items on smaller screens
+$('.scrollspy').scrollSpy();
 });
