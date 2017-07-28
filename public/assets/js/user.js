@@ -26,6 +26,8 @@ $(document).ready(function(){
             console.log(data);
             $('#currentUserName').text("Welcome, " + data.name);
 
+            $('#videoList').empty();
+            $('#articleList').empty();
             //putting info into save areas
             data.saved_videos.forEach(fillSavedVideos);
             data.saved_articles.forEach(fillSavedArticles);
@@ -42,6 +44,7 @@ $(document).ready(function(){
 
                 $(this).parent().parent().html("<h6>deleted</h6>").css('color', 'red').attr('id', itemId);
                 setTimeout(function() {
+                    $('#' + itemId).next().remove();
                     $('#' + itemId).remove();
                 }, 2000);
 
@@ -164,45 +167,202 @@ $(document).ready(function(){
     }
 
 
-//youTube API query for interest categories
-$(document).on("click", ".iBtns", function(event) {
-    event.preventDefault();
-    $("#youTubeDiv").html("");
-    
-    var q = $(this).attr("data-term");
-    var searchTerm = q.replace(/ /g, "+");
-    console.log(searchTerm);
-    var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
-    var queryURL = 'https://www.googleapis.com/youtube/v3/search?q=' + searchTerm + '&key=' + apiKey + '&fields=items&part=snippet';
-    console.log(queryURL);
+    //youTube API query for interest categories
+    $(document).on("click", ".iBtns", function(event) {
+        event.preventDefault();
+        $("#youTubeDiv").html("");
+        
+        var q = $(this).attr("data-term");
+        var searchTerm = q.replace(/ /g, "+");
+        console.log(searchTerm);
+        var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
+        var queryURL = 'https://www.googleapis.com/youtube/v3/search?q=' + searchTerm + '&key=' + apiKey + '&fields=items&part=snippet';
+        console.log(queryURL);
 
-     $.ajax({
-         type: "GET",
-         url: queryURL,
-         dataType: 'jsonp'
-     })
-    .done(function(data) {
-        console.log(data); 
+         $.ajax({
+             type: "GET",
+             url: queryURL,
+             dataType: 'jsonp'
+         })
+        .done(function(data) {
+            console.log(data); 
+
+            for (var i = 0; i < 5; i++) {
+
+                var youTubeResults = $("<div class='card'>");
+                var cardVideo = $("<div class='card-image'>");
+                var video = $("<iframe>");
+                    video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
+                    video.attr("frameborder", "0");
+                    video.attr("width", "100%");
+                    video.attr("height", "400");                
+                    cardVideo.append(video);
+                
+                var cardBody = $("<div class='card-content'>");
+
+                var title = $("<h6>");
+                    title.text(data.items[i].snippet.title);
+
+                var description = $("<p>");
+                    description.addClass("description");
+                    description.text(data.items[i].snippet.description);
+                    cardBody.append(title);
+                    cardBody.append(description);
+
+                var link = $("<div class='card-action'>");
+
+                var url = $("<a>");
+                    url.addClass("url");
+                    url.attr("href", "https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
+                    url.attr("target", "_blank");                
+                    url.append("https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
+                    url.text("Watch the Video");
+                    link.append(url);
+
+                var saveBtn = $("<button>");
+                    saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
+                    saveBtn.html("Save for Later");
+                    link.append(saveBtn);
+                    youTubeResults.append(cardVideo);
+                    youTubeResults.append(cardBody);
+                    youTubeResults.append(link);
+
+                $("#youTubeDiv").append(youTubeResults);
+            }
+
+            $('.saveBtn').on('click', function(event) {
+                event.preventDefault();
+
+                console.log("inside");
+                var videoTitle = $(this).parent().prev().children().first().text();
+                var videoLink = $(this).prev().attr('href');
+                console.log(videoTitle, videoLink);
+
+                var saveObject = {
+                    title: videoTitle,
+                    link: videoLink
+                }
+
+                var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
+                console.log(queryUrl);
+
+                saveItem(queryUrl, saveObject, "Video");
+            });
+        });
+    });
+
+
+    //youTube API query for political categories
+    $(document).on("click", ".pBtns", function(event) {
+        event.preventDefault();
+        $("#youTubeDiv").html("");
+        
+        var q = $(this).attr("data-term");
+        var searchTerm = q.replace(/ /g, "+");
+        console.log(searchTerm);
+        var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
+        var queryURL = 'https://www.googleapis.com/youtube/v3/search?q=pro-' + searchTerm + '&key=' + apiKey + '&fields=items&part=snippet';
+        console.log(queryURL);
+
+         $.ajax({
+             type: "GET",
+             url: queryURL,
+             dataType: 'jsonp'
+         })
+        .done(function(data) {
+            console.log(data); 
+
+            for (var i = 0; i < 5; i++) {
+                var youTubeResults = $("<div class='card'>");
+                var cardVideo = $("<div class='card-image'>");
+                var video = $("<iframe>");
+                    video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
+                    video.attr("frameborder", "0");
+                    video.attr("width", "100%");
+                    video.attr("height", "400");                
+                    cardVideo.append(video);
+
+                var cardBody = $("<div class='card-content'>");
+
+                var title = $("<h6>");
+                    title.text(data.items[i].snippet.title);
+
+                var description = $("<p>");
+                    description.addClass("description");
+                    description.text(data.items[i].snippet.description);
+                    cardBody.append(title);
+                    cardBody.append(description);
+
+                var link = $("<div class='card-action'>");
+
+                var url = $("<a>");
+                    url.addClass("url");
+                    url.attr("href", "https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
+                    url.attr("target", "_blank");                
+                    url.append("https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
+                    url.text("Watch the Video");
+                    link.append(url);
+
+                var saveBtn = $("<button>");
+                    saveBtn.addClass("waves-effect waves-light red btn saveBtn");
+                    saveBtn.html("Save for Later");
+                    link.append(saveBtn);
+                    youTubeResults.append(cardVideo);
+                    youTubeResults.append(cardBody);
+                    youTubeResults.append(link);
+
+                $("#youTubeDiv").append(youTubeResults);
+            }
+
+            $('.saveBtn').on('click', function(event) {
+                event.preventDefault();
+                console.log("inside");
+                var videoTitle = $(this).parent().prev().children().first().text();
+                var videoLink = $(this).prev().attr('href');
+                console.log(videoTitle, videoLink);
+
+                var saveObject = {
+                    title: videoTitle,
+                    link: videoLink
+                }
+
+                var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
+                console.log(queryUrl);
+
+                saveItem(queryUrl, saveObject, "Video");
+            });
+        });
+    });
+
+    //getting news API query
+    function newsCall (searchTerm) {
+        var apiKey = "09061982c53e479993c7a432a6f05ced";
+        var queryURL = "https://newsapi.org/v1/articles?source=" + searchTerm + "&apiKey=" + apiKey;
+        console.log(queryURL);
+        $.ajax({
+             type: "GET",
+             url: queryURL
+         })
+        .done(function(data) {
+            console.log(data); 
 
         for (var i = 0; i < 5; i++) {
+            var newsResults = $("<div class='card'>");
+            var cardImage = $("<div class='card-image'>");
+            var image = $("<img>");
+                image.attr("id", "resultImg");
+                image.attr("src", data.articles[i].urlToImage); 
+                cardImage.append(image);
+                newsResults.append(cardImage);
 
-            var youTubeResults = $("<div class='card'>");
-            var cardVideo = $("<div class='card-image'>");
-            var video = $("<iframe>");
-                video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
-                video.attr("frameborder", "0");
-                video.attr("width", "100%");
-                video.attr("height", "400");                
-                cardVideo.append(video);
-            
-            var cardBody = $("<div class='card-content'>");
+            var cardBody = $("<div class='card-content'>");  
 
             var title = $("<h6>");
-                title.text(data.items[i].snippet.title);
+                title.text(data.articles[i].title);
 
             var description = $("<p>");
                 description.addClass("description");
-                description.text(data.items[i].snippet.description);
+                description.text(data.articles[i].description);
                 cardBody.append(title);
                 cardBody.append(description);
 
@@ -210,83 +370,84 @@ $(document).on("click", ".iBtns", function(event) {
 
             var url = $("<a>");
                 url.addClass("url");
-                url.attr("href", "https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
-                url.attr("target", "_blank");                
-                url.append("https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
-                url.text("Watch the Video");
+                url.attr("href", data.articles[i].url);
+                url.attr("target", "_blank");
+                url.text("Read the Article");
                 link.append(url);
 
             var saveBtn = $("<button>");
                 saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
-                saveBtn.html("Save for Later");
-                link.append(saveBtn);
-                youTubeResults.append(cardVideo);
-                youTubeResults.append(cardBody);
-                youTubeResults.append(link);
+                saveBtn.html("Save for Later");  
+                link.append(saveBtn);          
+                newsResults.append(cardBody);
+                newsResults.append(link);
 
-            $("#youTubeDiv").append(youTubeResults);
+            $("#youTubeDiv").append(newsResults);
         }
 
-        $('.saveBtn').on('click', function(event) {
-            event.preventDefault();
+            $('.saveBtn').on('click', function(event) {
+                event.preventDefault();
+                console.log("inside");
+                var articleTitle = $(this).parent().prev().children().first().text();
+                var articleLink = $(this).prev().attr('href');
+                console.log(articleTitle, articleLink);
 
-            console.log("inside");
-            var videoTitle = $(this).prev().prev().text();
-            var videoLink = $(this).next().next().attr('href');
-            console.log(videoTitle, videoLink);
+                var saveObject = {
+                    title: articleTitle,
+                    link: articleLink
+                }
 
-            var saveObject = {
-                title: videoTitle,
-                link: videoLink
-            }
+                var queryUrl = "/api/savearticle/" + localStorage.getItem('email');
+                console.log(queryUrl);
 
-            var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
-            console.log(queryUrl);
+                saveItem(queryUrl, saveObject, "Article");
+            });
+        });    
+    }
 
-            saveItem(queryUrl, saveObject, "Video");
-        });
+    $(document).on("click", ".nBtns", function(event) {
+        event.preventDefault();
+        $("#youTubeDiv").html("");
+        //get data-term from button and replace empty spaces with dashes for AJAX call
+        var q = $(this).attr("data-term");
+        var searchTerm = q.replace(/ /g, "-");
+        newsCall(searchTerm);
     });
-});
 
 
-//youTube API query for political categories
-$(document).on("click", ".pBtns", function(event) {
-    event.preventDefault();
-    $("#youTubeDiv").html("");
-    
-    var q = $(this).attr("data-term");
-    var searchTerm = q.replace(/ /g, "+");
-    console.log(searchTerm);
-    var apiKey = 'AIzaSyC9u9p589T-kb7CDunFP9ykos-fl0vtjtI';
-    var queryURL = 'https://www.googleapis.com/youtube/v3/search?q=pro-' + searchTerm + '&key=' + apiKey + '&fields=items&part=snippet';
-    console.log(queryURL);
+    //book user search
+    $(document).on("click", ".bookSearch", function(event) {
+        // var apiKey = "AIzaSyDBRP2OMcVvnzfqi8HZ2HizlEv5c__RMDg";
+        var q = $("#bookTerm").val().trim();
+        console.log(q);
+        var searchTerm = q.replace(/ /g, "+");
+        var queryURL = "https://www.googleapis.com/books/v1/volumes?q="+ searchTerm;
 
-     $.ajax({
-         type: "GET",
-         url: queryURL,
-         dataType: 'jsonp'
-     })
-    .done(function(data) {
-        console.log(data); 
+        $.ajax({
+             type: "GET",
+             url: queryURL
+         })
+        .done(function(data) {
+            console.log(data); 
 
-        for (var i = 0; i < 5; i++) {
-            var youTubeResults = $("<div class='card'>");
-            var cardVideo = $("<div class='card-image'>");
-            var video = $("<iframe>");
-                video.attr("src", "https://www.youtube.com/embed/" + data.items[i].id.videoId);
-                video.attr("frameborder", "0");
-                video.attr("width", "100%");
-                video.attr("height", "400");                
-                cardVideo.append(video);
+            for (var i = 0; i < 5; i++) {
 
-            var cardBody = $("<div class='card-content'>");
+            var bookResults = $("<div class='card'>");
+            var cardImage = $("<div class='card-image'>");
+            var image = $("<img>");
+                image.attr("id", "resultImg");
+                image.attr("src", data.items[i].volumeInfo.imageLinks.thumbnail); 
+                cardImage.append(image);
+                bookResults.append(cardImage);
+
+            var cardBody = $("<div class='card-content'>");  
 
             var title = $("<h6>");
-                title.text(data.items[i].snippet.title);
+                title.text(data.items[i].volumeInfo.title);
 
             var description = $("<p>");
                 description.addClass("description");
-                description.text(data.items[i].snippet.description);
+                description.text("By " + data.items[i].volumeInfo.authors[0]);
                 cardBody.append(title);
                 cardBody.append(description);
 
@@ -294,183 +455,25 @@ $(document).on("click", ".pBtns", function(event) {
 
             var url = $("<a>");
                 url.addClass("url");
-                url.attr("href", "https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
-                url.attr("target", "_blank");                
-                url.append("https://www.youtube.com/watch?v=" + data.items[i].id.videoId);
-                url.text("Watch the Video");
+                url.attr("href", data.items[i].volumeInfo.previewLink);
+                url.attr("target", "_blank");
+                url.text("Preview the Book");
                 link.append(url);
 
             var saveBtn = $("<button>");
-                saveBtn.addClass("waves-effect waves-light red btn saveBtn");
-                saveBtn.html("Save for Later");
-                link.append(saveBtn);
-                youTubeResults.append(cardVideo);
-                youTubeResults.append(cardBody);
-                youTubeResults.append(link);
+                saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
+                saveBtn.html("Save for Later");  
+                link.append(saveBtn);          
+                bookResults.append(cardBody);
+                bookResults.append(link);
 
-            $("#youTubeDiv").append(youTubeResults);
+            $("#youTubeDiv").html(bookResults);
+
         }
 
-        $('.saveBtn').on('click', function(event) {
-            event.preventDefault();
-            console.log("inside");
-            var videoTitle = $(this).prev().prev().text();
-            var videoLink = $(this).next().next().attr('href');
-            console.log(videoTitle, videoLink);
 
-            var saveObject = {
-                title: videoTitle,
-                link: videoLink
-            }
-
-            var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
-            console.log(queryUrl);
-
-            saveItem(queryUrl, saveObject, "Video");
-        });
+        $(".bookSearch").empty();
     });
-});
-
-//getting news API query
-function newsCall (searchTerm) {
-    var apiKey = "09061982c53e479993c7a432a6f05ced";
-    var queryURL = "https://newsapi.org/v1/articles?source=" + searchTerm + "&apiKey=" + apiKey;
-    console.log(queryURL);
-    $.ajax({
-         type: "GET",
-         url: queryURL
-     })
-    .done(function(data) {
-        console.log(data); 
-
-    for (var i = 0; i < 5; i++) {
-        var newsResults = $("<div class='card'>");
-        var cardImage = $("<div class='card-image'>");
-        var image = $("<img>");
-            image.attr("id", "resultImg");
-            image.attr("src", data.articles[i].urlToImage); 
-            cardImage.append(image);
-            newsResults.append(cardImage);
-
-        var cardBody = $("<div class='card-content'>");  
-
-        var title = $("<h6>");
-            title.text(data.articles[i].title);
-
-        var description = $("<p>");
-            description.addClass("description");
-            description.text(data.articles[i].description);
-            cardBody.append(title);
-            cardBody.append(description);
-
-        var link = $("<div class='card-action'>");
-
-        var url = $("<a>");
-            url.addClass("url");
-            url.attr("href", data.articles[i].url);
-            url.attr("target", "_blank");
-            url.text("Read the Article");
-            link.append(url);
-
-        var saveBtn = $("<button>");
-            saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
-            saveBtn.html("Save for Later");  
-            link.append(saveBtn);          
-            newsResults.append(cardBody);
-            newsResults.append(link);
-
-        $("#youTubeDiv").append(newsResults);
-    }
-
-        $('.saveBtn').on('click', function(event) {
-            event.preventDefault();
-            console.log("inside");
-            var articleTitle = $(this).prev().prev().text();
-            var articleLink = $(this).next().next().attr('href');
-            console.log(articleTitle, articleLink);
-
-            var saveObject = {
-                title: articleTitle,
-                link: articleLink
-            }
-
-            var queryUrl = "/api/savearticle/" + localStorage.getItem('email');
-            console.log(queryUrl);
-
-            saveItem(queryUrl, saveObject, "Article");
-        });
-    });    
-}
-
-$(document).on("click", ".nBtns", function(event) {
-    event.preventDefault();
-    $("#youTubeDiv").html("");
-    //get data-term from button and replace empty spaces with dashes for AJAX call
-    var q = $(this).attr("data-term");
-    var searchTerm = q.replace(/ /g, "-");
-    newsCall(searchTerm);
-});
-
-
-//book user search
-$(document).on("click", ".bookSearch", function(event) {
-    // var apiKey = "AIzaSyDBRP2OMcVvnzfqi8HZ2HizlEv5c__RMDg";
-    var q = $("#bookTerm").val().trim();
-    console.log(q);
-    var searchTerm = q.replace(/ /g, "+");
-    var queryURL = "https://www.googleapis.com/books/v1/volumes?q="+ searchTerm;
-
-    $.ajax({
-         type: "GET",
-         url: queryURL
-     })
-    .done(function(data) {
-        console.log(data); 
-
-        for (var i = 0; i < 5; i++) {
-
-        var bookResults = $("<div class='card'>");
-        var cardImage = $("<div class='card-image'>");
-        var image = $("<img>");
-            image.attr("id", "resultImg");
-            image.attr("src", data.items[i].volumeInfo.imageLinks.thumbnail); 
-            cardImage.append(image);
-            bookResults.append(cardImage);
-
-        var cardBody = $("<div class='card-content'>");  
-
-        var title = $("<h6>");
-            title.text(data.items[i].volumeInfo.title);
-
-        var description = $("<p>");
-            description.addClass("description");
-            description.text("By " + data.items[i].volumeInfo.authors[0]);
-            cardBody.append(title);
-            cardBody.append(description);
-
-        var link = $("<div class='card-action'>");
-
-        var url = $("<a>");
-            url.addClass("url");
-            url.attr("href", data.items[i].volumeInfo.previewLink);
-            url.attr("target", "_blank");
-            url.text("Preview the Book");
-            link.append(url);
-
-        var saveBtn = $("<button>");
-            saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
-            saveBtn.html("Save for Later");  
-            link.append(saveBtn);          
-            bookResults.append(cardBody);
-            bookResults.append(link);
-
-        $("#youTubeDiv").html(bookResults);
-
-    }
-
-
-    $(".bookSearch").empty();
-});
 
 });
 
@@ -610,7 +613,7 @@ function fillSavedVideos(item) {
     small.text('watch video');
     link.append(small);
 
-    colOne.append(title).append(link).append('<hr>');
+    colOne.append(title).append(link);
 
     var colTwo = $('<div>');
     colTwo.addClass('col s3');
@@ -627,7 +630,7 @@ function fillSavedVideos(item) {
 
     row.append(colOne).append(colTwo);
 
-    $('#videoList').prepend(row);
+    $('#videoList').prepend('<hr>').prepend(row);
 }
 
 function fillSavedArticles(item) {
@@ -652,7 +655,7 @@ function fillSavedArticles(item) {
     small.text('read article');
     link.append(small);
 
-    colOne.append(title).append(link).append('<hr>');
+    colOne.append(title).append(link);
 
     var colTwo = $('<div>');
     colTwo.addClass('col s3');
@@ -669,7 +672,7 @@ function fillSavedArticles(item) {
 
     row.append(colOne).append(colTwo);
 
-    $('#articleList').prepend(row);
+    $('#articleList').prepend('<hr>').prepend(row);
 }
 
 function removeItem(query) {

@@ -18,6 +18,10 @@ router.get("/dashboard", isLoggedIn, function(req, res) {
   res.sendFile(path.join(__dirname, "../public/user_page_design.html"));
 });
 
+router.get("/discuss", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/chat.html"));
+});
+
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
   console.log("isLoggedIn function running");
