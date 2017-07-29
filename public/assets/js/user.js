@@ -423,7 +423,6 @@ $(document).ready(function(){
 
     //book user search
     $(document).on("click", ".bookSearch", function(event) {
-        // var apiKey = "AIzaSyDBRP2OMcVvnzfqi8HZ2HizlEv5c__RMDg";
         var q = $("#bookTerm").val().trim();
         console.log(q);
         var searchTerm = q.replace(/ /g, "+");
@@ -571,29 +570,6 @@ $(document).ready(function(){
             console.log(data);
             Materialize.toast(type + " saved!", 4000);
             completeStorage();
-
-            // if (type === "Video") {
-            //     var vidArray = [];
-            //     vidArray.push(data.saved_videos[data.saved_videos.length - 1]);
-            //     vidArray.forEach(fillSavedVideos);
-            // } else {
-            //     var artArray = [];
-            //     artArray.push(data.saved_articles[data.saved_articles.length - 1]);
-            //     artArray.forEach(fillSavedArticles);
-            // }
-
-            // $('.delItem').on('click', function(event) {
-            //     event.preventDefault();
-            //     var itemId = $(this).attr('data-id');
-            //     console.log("saveItem click");
-
-            //     $(this).parent().parent().html("<h6>deleted</h6>").css('color', 'red').attr('id', itemId);
-            //     setTimeout(function() {
-            //         $('#' + itemId).remove();
-            //     }, 2000);
-
-            //     removeItem("/api/deleteitem/" + itemId);
-            // });
         });
     }
 
@@ -753,11 +729,6 @@ $(document).ready(function(){
             localStorage.setItem('topics', topics);
 
             window.location = "/discuss";
-
-            // $.post("/group/chatspace/" + room, function(response) {
-            //     console.log(response);
-            //     window.location = "/discuss";
-            // });
 
         });
 

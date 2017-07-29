@@ -3,10 +3,6 @@ var router = express.Router();
 var Profile = require("../models/profile.js");
 var Chat = require("../models/chatgroup.js");
 
-// router.get("/profile", function(req, res) {
-//   res.json("thanks");
-// });
-
 router.get("/completestorage/:email", function(req, res) {
   Profile.findOne({ 'local.email': req.params.email }, function(err, user) {
     if (err) throw err;
@@ -123,10 +119,6 @@ router.put("/joingroup/:email", function(req, res) {
 
     if (profile.political_lean === "left-leaning") {
       Chat.findOneAndUpdate({ name: req.body.name }, {
-        // $push: {member_names: profile.name},
-        // $inc: {left_members: 1},
-        // $inc: {total_members: 1},
-        // $push: {members: profile._id}
         $push: {member_names: profile.name, members: profile._id},
         $inc: {left_members: 1, total_members: 1}
       },
@@ -137,10 +129,6 @@ router.put("/joingroup/:email", function(req, res) {
       });
     } else {
       Chat.findOneAndUpdate({ name: req.body.name }, {
-        // $push: {member_names: profile.name},
-        // $inc: {right_members: 1},
-        // $inc: {total_members: 1},
-        // $push: {members: profile._id}
         $push: {member_names: profile.name, members: profile._id},
         $inc: {right_members: 1, total_members: 1}
       },

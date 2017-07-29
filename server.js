@@ -6,7 +6,6 @@ var htmlRoutes = require("./controllers/html_routes.js")
 var apiRoutes = require("./controllers/api_routes.js");
 var loginRoutes = require("./controllers/login_routes.js");
 var passport = require("passport");
-// var flash = require("connect-flash");
 var session = require("express-session");
 var cookieParser = require("cookie-parser");
 var PORT = process.env.PORT || 3000;
@@ -26,8 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+// Use this for test: "mongodb://localhost/dgtdb"
 // Use this when ready to deploy: process.env.MONGODB_URI
-mongoose.connect("mongodb://localhost/dgtdb");
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 db.on("error", function(error) {
@@ -38,16 +38,6 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-// require('./config/passport')(passport);
-
-// var room;
-
-// app.post("/group/chatspace/:room", function(req, res) {
-//   room = req.params.room;
-//   console.log(room);
-//   res.json('received');
-// });
-
 app.use(session({
   secret: 'doppleuser',
   resave: true,
@@ -55,20 +45,17 @@ app.use(session({
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(flash());
 
 
 app.use("/", htmlRoutes)
 app.use("/api/", apiRoutes);
 app.use("/user/", loginRoutes);
-// require("./controllers/login_routes.js")(app, passport);
 
 
 
 io.on('connection', function(socket) {
   console.log('a user connected');
   var userRoom;
-  // socket.join(room);
 
   socket.on('room', function(room) {
     userRoom = room;

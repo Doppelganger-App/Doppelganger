@@ -5,7 +5,6 @@ var Schema = mongoose.Schema;
 var ProfileSchema = new Schema({
   name: {
     type: String,
-    // unique: true,
     required: true,
     default: "Test"
   },
