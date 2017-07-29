@@ -45,8 +45,6 @@
                 <li class="tab col s3 tabs-fixed-width indyTabs"><a class="active" href="#interests">Interests</a></li>
                 <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#politics">Politics</a></li>
                 <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#news">News</a></li>
-                <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#books">Books</a></li>
-
               </ul>
             </div>
             <div id="interests" class="col s12">
@@ -58,20 +56,6 @@
             <div id="news" class="col s12">
                 <div class="nButtonsDiv"></div>
             </div>     
-            <div id="books" class="col s12">
-                <div class="row">
-                    <form class="col s12">
-                      <div class="row">
-                            <div class="input-field col s6">
-                              <input placeholder="Type a search term here to search for books" id="bookTerm" type="text" class="validate">
-                              <label for="first_name">Search Term</label>
-                            </div>
-                        </div>
-                        <a class="waves-effect waves-light red btn bookSearch">Search</a>
-                    </form>
-                </div>
-                <div class="bButtonsDiv"></div>
-            </div>
 
             <div class="row videoResults">
                 <div id="youTubeDiv"></div>  
@@ -82,25 +66,27 @@
             <div id="podcastDiv" class="section scrollspy">
                 <h4 class="divTitles">Podcasts</h4>
             </div>
-            <div id="savedItems" class="section scrollspy">
-                <h4 class="divTitles">Your Saved Items</h4>
-                <ul class="collapsible popout savedList" data-collapsible="accordion">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">video_library</i>Saved Videos</div>
-                        <div class="collapsible-body links" id="videoList"></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">library_books</i>Saved Articles</div>
-                        <div class="collapsible-body links" id="articleList"></div>
-                    </li>
-                    <li>
-                      <div class="collapsible-header"><i class="material-icons">group</i>Chat Groups</div>
-                      <div class="collapsible-body links" id="chatList"></div>
-                    </li>
-                </ul>
-                <a class="waves-effect waves-light btn" id="openGroup">Start a new Chat Group</a>
+            <div class="toc-wrapper">
+                <div id="savedItems" class="section scrollspy">
+                    <h4 class="divTitles">Your Saved Items</h4>
+                    <ul class="collapsible popout savedList" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">video_library</i>Saved Videos</div>
+                            <div class="collapsible-body links" id="videoList"></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">library_books</i>Saved Articles</div>
+                            <div class="collapsible-body links" id="articleList"></div>
+                        </li>
+                        <li>
+                          <div class="collapsible-header"><i class="material-icons">group</i>Chat Groups</div>
+                          <div class="collapsible-body links" id="chatList"></div>
+                        </li>
+                    </ul>
+                    <a class="waves-effect waves-light btn" id="openGroup">Start a new Chat Group</a>
 
-                <div id="openChatGroups">
+                    <div id="openChatGroups">
+                    </div>
                 </div>
             </div>
         </div>

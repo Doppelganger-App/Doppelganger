@@ -85,11 +85,11 @@ $(document).ready(function(){
 
             makeNewsButtons(newsTerms);
         
-        var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetOneSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
         
             makeWidgetOne(widgetOneSource);
 
-        var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetTwoSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
                 
             makeWidgetTwo(widgetTwoSource);
         
@@ -111,11 +111,11 @@ $(document).ready(function(){
         
             makeNewsButtons(newsTerms);
 
-        var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetOneSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetOne(widgetOneSource);
 
-        var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Feeling Techie&m=podcast&e=podcast&w=250&h=300&ids=617416468,665964031,959773870,326120877,458066753,955198749,842818711,360889910,561470997,305253468&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetTwoSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Feeling Techie&m=podcast&e=podcast&w=250&h=300&ids=617416468,665964031,959773870,326120877,458066753,955198749,842818711,360889910,561470997,305253468&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetTwo(widgetTwoSource);
 
@@ -137,11 +137,11 @@ $(document).ready(function(){
 
             makeNewsButtons(newsTerms);
 
-        var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetOneSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetOne(widgetOneSource);
 
-        var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=620967489,418152882,1112194905,1126543994,1155318497,635045292,965293227,209377688,1065050908,699723863&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetTwoSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=620967489,418152882,1112194905,1126543994,1155318497,635045292,965293227,209377688,1065050908,699723863&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetTwo(widgetTwoSource);
     }
@@ -162,11 +162,11 @@ $(document).ready(function(){
         
             makeNewsButtons(newsTerms);
 
-        var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1065051273,122415315,568115978,583661711,309787436,259917817,1065050908,1069889359,564302516,563316406,1183123221&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetOneSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1065051273,122415315,568115978,583661711,309787436,259917817,1065050908,1069889359,564302516,563316406,1183123221&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetOne(widgetOneSource);
 
-        var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Science&m=podcast&e=podcast&w=250&h=300&ids=470623801,73329284,325404506,278981407,169540430,343580439,128859062,350359306,151485804,152249110&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetTwoSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Science&m=podcast&e=podcast&w=250&h=300&ids=470623801,73329284,325404506,278981407,169540430,343580439,128859062,350359306,151485804,152249110&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetTwo(widgetTwoSource);
     
@@ -310,7 +310,7 @@ $(document).ready(function(){
                     link.append(url);
 
                 var saveBtn = $("<button>");
-                    saveBtn.addClass("waves-effect waves-light red btn saveBtn");
+                    saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
                     saveBtn.html("Save for Later");
                     link.append(saveBtn);
                     youTubeResults.append(cardVideo);
@@ -421,68 +421,6 @@ $(document).ready(function(){
     });
 
 
-    //book user search
-    $(document).on("click", ".bookSearch", function(event) {
-        var q = $("#bookTerm").val().trim();
-        console.log(q);
-        var searchTerm = q.replace(/ /g, "+");
-        var queryURL = "https://www.googleapis.com/books/v1/volumes?q="+ searchTerm;
-
-        $.ajax({
-             type: "GET",
-             url: queryURL
-         })
-        .done(function(data) {
-            console.log(data); 
-
-            for (var i = 0; i < 5; i++) {
-
-                var bookResults = $("<div class='card'>");
-                var cardImage = $("<div class='card-image'>");
-                var image = $("<img>");
-                    image.attr("id", "resultImg");
-                    image.attr("src", data.items[i].volumeInfo.imageLinks.thumbnail); 
-                    cardImage.append(image);
-                    bookResults.append(cardImage);
-
-                var cardBody = $("<div class='card-content'>");  
-
-                var title = $("<h6>");
-                    title.text(data.items[i].volumeInfo.title);
-
-                var description = $("<p>");
-                    description.addClass("description");
-                    description.text("By " + data.items[i].volumeInfo.authors[0]);
-                    cardBody.append(title);
-                    cardBody.append(description);
-
-                var link = $("<div class='card-action'>");
-
-                var url = $("<a>");
-                    url.addClass("url");
-                    url.attr("href", data.items[i].volumeInfo.previewLink);
-                    url.attr("target", "_blank");
-                    url.text("Preview the Book");
-                    link.append(url);
-
-                var saveBtn = $("<button>");
-                    saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
-                    saveBtn.html("Save for Later");  
-                    link.append(saveBtn);          
-                    bookResults.append(cardBody);
-                    bookResults.append(link);
-
-                $("#youTubeDiv").html(bookResults);
-
-            }
-
-
-            $(".bookSearch").empty();
-        });
-
-    });
-
-
     //--------------BUTTON AND WIDGET MAKERS------------------
 
     function makeInterestButtons(terms) {
@@ -507,18 +445,6 @@ $(document).ready(function(){
             b.attr("data-term", terms[i]);
             b.text(terms[i]);
             $(".pButtonsDiv").append(b);
-        }
-    }
-
-    function makeBookButtons(terms) {
-        $(".bButtonsDiv").empty();
-
-        for (var i = 0; i < terms.length; i++) {
-            var b = $("<a>");
-            b.addClass("waves-effect waves-light red btn-large termBtns bBtns");
-            b.attr("data-term", terms[i]);
-            b.text(terms[i]);
-            $(".bButtonsDiv").append(b);
         }
     }
 
@@ -671,6 +597,10 @@ $(document).ready(function(){
 
     //scrollspy for podcasts and saved items on smaller screens
     $('.scrollspy').scrollSpy();
+
+    $('.toc-wrapper').pushpin({
+      top: 800
+    });
 
     //Code for Chat Groups
 
