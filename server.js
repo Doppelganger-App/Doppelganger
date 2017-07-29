@@ -14,6 +14,8 @@ var mongoose = require("mongoose");
 mongoose.Promise = Promise;
 
 var app = express();
+var http = require('http').Server(app);
+var io = require("socket.io")(http);
 
 app.use(express.static(path.join(__dirname + "/public")));
 
@@ -25,7 +27,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Use this when ready to deploy: process.env.MONGODB_URI
-mongoose.connect("mongodb://localhost/dopplegangertestdb");
+mongoose.connect("mongodb://localhost/dgtdb");
 var db = mongoose.connection;
 
 db.on("error", function(error) {
@@ -38,6 +40,14 @@ db.once("open", function() {
 
 // require('./config/passport')(passport);
 
+// var room;
+
+// app.post("/group/chatspace/:room", function(req, res) {
+//   room = req.params.room;
+//   console.log(room);
+//   res.json('received');
+// });
+
 app.use(session({
   secret: 'doppleuser',
   resave: true,
@@ -47,10 +57,43 @@ app.use(passport.initialize());
 app.use(passport.session());
 // app.use(flash());
 
+
 app.use("/", htmlRoutes)
 app.use("/api/", apiRoutes);
 app.use("/user/", loginRoutes);
 // require("./controllers/login_routes.js")(app, passport);
 
 
-app.listen(PORT, console.log("Listening on port: " + PORT));
+
+io.on('connection', function(socket) {
+  console.log('a user connected');
+  var userRoom;
+  // socket.join(room);
+
+  socket.on('room', function(room) {
+    userRoom = room;
+    console.log("set room to " + userRoom);
+    socket.join(room);
+  });
+
+  socket.on('join', function(user) {
+    console.log(user);
+    socket.broadcast.to(userRoom).emit('join', user);
+  });
+
+  socket.on('chat message', function(msg) {
+    console.log(msg);
+    io.to(userRoom).emit('chat message', msg);
+  });
+
+  socket.on('exit', function(user) {
+    socket.broadcast.to(userRoom).emit('exit', user);
+  });
+
+  socket.on('disconnect', function() {
+    socket.leave(userRoom);
+    console.log('user disconnected');
+  });
+});
+
+http.listen(PORT, console.log("Listening on port: " + PORT));

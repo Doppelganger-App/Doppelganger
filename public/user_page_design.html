@@ -105,11 +105,57 @@
                         <div class="collapsible-header"><i class="material-icons">library_books</i>Saved Articles</div>
                         <div class="collapsible-body links" id="articleList"></div>
                     </li>
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">group</i>Chat Groups</div>
+                      <div class="collapsible-body links" id="chatList"></div>
+                    </li>
                 </ul>
+                <a class="waves-effect waves-light btn" id="openGroup">Start a new Chat Group</a>
+
+                <div id="openChatGroups">
+                </div>
             </div>
         </div>
 
     </div>
+
+    <div id="startChatgroup" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+                <h4 class="center-align">Create a New Chat Group</h4>
+                <hr>
+            </div>
+            <br>
+            <div class="row">
+                <h5 class="center-align">Give it a Name</h5>
+                <div class="input-field col s6 offset-s3">
+                    <input placeholder="Awesome Group Name" id="groupName" type="text" class="validate">
+                    <label for="groupName">Chat Group Name</label>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <h5 class="center-align">Pick some Topics <small>(we've thrown in some examples)</small></h5>
+                <h6 class="center-align">Type on the line and hit "enter" to add a topic. Click "x" to delete a topic.</h6>
+                <div class="col s10 offset-s1">
+                    <div class="chips chips-initial"></div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <h5 class="center-align">Add a Welcome Message</h5>
+                <div class="input-field col s10 offset-s1">
+                    <textarea id="welcomeMessage" placeholder="Come expand your mind in this collegial arena for the interchange of ideas" class="materialize-textarea"></textarea>
+                    <label for="welcomeMessage">Welcome Message (optional)</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-action modal-close waves-effect waves-green btn-flat delvals">Close</a>
+          <a class="modal-action modal-close waves-effect waves-green btn delvals" id="getvals">Create</a>
+        </div>
+    </div>
+
 </div>
     
 <!-- <script>
