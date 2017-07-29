@@ -15,18 +15,19 @@ router.get("/login", function(req, res) {
 });
 
 router.get("/dashboard", isLoggedIn, function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/user_page_design.html"));
+  res.sendFile(path.join(__dirname, "../public/user.html"));
 });
 
-// route middleware to make sure a user is logged in
+router.get("/discuss", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/chat.html"));
+});
+
 function isLoggedIn(req, res, next) {
   console.log("isLoggedIn function running");
     
-  // if user is authenticated in the session, carry on 
   if (req.isAuthenticated())
     return next();
 
-  // if they aren't redirect them to the home page
   res.redirect('/');
 }
 

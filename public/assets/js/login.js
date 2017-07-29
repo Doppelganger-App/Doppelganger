@@ -6,4 +6,6 @@ $(document).ready(function() {
     localStorage.setItem('signup', false);
     $('#sessionLogin').click();
   });
+  
+  $(".button-collapse").sideNav();
 });

@@ -62,9 +62,13 @@
 #youTubeDiv {
 	float:left;
 	color:black;
-	width:60%;
-	margin-left:8%;
+	margin-left:5%;
 	margin-right:5%;
+	margin-top: 20px;
+}
+
+.bookSearch {
+	border-radius: 15px;
 }
 
 .resultsDiv {
@@ -85,7 +89,6 @@
 
 .saveBtn {
 	margin-left:33%;
-	margin-right:33%;
 	border-radius: 15px;
 	margin-bottom:10px;
 }
@@ -100,9 +103,10 @@ body, nav {
 }
 
 #logo {
-    margin-top: -60px;
-    width: 600px;
+    margin-top: -90px;
+    width: 85%;
 }
+
 a#signup {
     height: 50px; 
     line-height: 50px;
@@ -134,4 +138,40 @@ button#getUser {
 	margin-left: 10px;
 }
 
+li#currentUserName {
+	color: white;
+	margin-right: 20px;
+}
+
+@media screen and (max-width: 1680px) {
+	#logo {
+		width: 80%;
+		margin-top: -80px;
+	}
+}
+
+@media screen and (max-width: 1280px) {
+	#logo {
+       width: 100%;
+       margin-top: -60px;
+	}
+}
+
+@mediascreen and (max-width: 992px) {
+	
+}
+
+@media screen and (max-width: 680px) {
+    #logo {
+    	margin-top: 5px;
+    }
+
+}
+
+@media screen and (max-width: 460px) {
+	#logo {
+        margin-top: 0;
+        width: 100%;
+	}
+}
 

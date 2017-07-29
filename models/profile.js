@@ -5,7 +5,6 @@ var Schema = mongoose.Schema;
 var ProfileSchema = new Schema({
   name: {
     type: String,
-    // unique: true,
     required: true,
     default: "Test"
   },
@@ -34,6 +33,11 @@ var ProfileSchema = new Schema({
   saved_articles: [{
     title: String,
     link: String
+  }],
+  chatgroups: [{
+    name: String,
+    namespace: String,
+    topics: [String]
   }]
 });
 
