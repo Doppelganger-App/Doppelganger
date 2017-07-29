@@ -2,45 +2,14 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcrypt-nodejs");
 var Schema = mongoose.Schema;
 
-var PodcastSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  link: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
-
-var VideosSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  link: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
-
 var ProfileSchema = new Schema({
   name: {
     type: String,
-    unique: true,
     required: true,
     default: "Test"
   },
   local: {
-    username: String,
+    email: String,
     password: String
   },
   join_date: {
@@ -57,27 +26,28 @@ var ProfileSchema = new Schema({
     required: true,
     default: "left-leaning"
   },
-  saved_podcasts: [PodcastSchema],
-  saved_videos: [VideosSchema]
-  // saved_podcasts: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Podcasts"
-  // }],
-  // saved_videos: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Videos"
-  // }],
-  // saved_articles: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Articles"
-  // }]
+  saved_videos: [{
+    title: String,
+    link: String
+  }],
+  saved_articles: [{
+    title: String,
+    link: String
+  }],
+  chatgroups: [{
+    name: String,
+    namespace: String,
+    topics: [String]
+  }]
 });
 
 ProfileSchema.methods.generateHash = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-
+ProfileSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.local.password);
+};
 
 var Profile = mongoose.model("Profile", ProfileSchema);
 

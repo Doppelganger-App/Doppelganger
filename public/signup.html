@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name= "viewport" content="width=device, inital-scale=1">
+        <title>Doppelganger-Signup Page</title>
+        <link rel="stylesheet" href="assets/css/signup.css">
+    </head>
+    <body>
+        <div class="main">
+            <header> Create your Doppelgänger Profile </header>
+            <form action="/user/signup" method="post" class="form-box">
+            <label for="username">Name</label>
+            <div class="inp-row">
+            <div class="icon"><img src="assets/images/nametag.png"></div>
+                <input type="text" name="username" class="inp" id="username" placeholder="Ima Person" required>     
+                </div>
+            <label for="email">Email</label>
+            <div class="inp-row">
+                <div class="icon"><img src="assets/images/email.png"></div>
+                <input type="email" name="email" class="inp" id="email" placeholder="user_email@email.com" required>     
+                </div>
+                <label for="password">Password</label>
+            <div class="inp-row">
+                <div class="icon"><img src="assets/images/pw.png"></div>
+                <input type="password" name="password" class="inp" id="password" placeholder="your password" required>
+                </div>
+                <label for="repass">Please confirm your password</label>
+            <div class="inp-row">
+                <div class="icon"><img src="assets/images/pw.png"></div>
+                <input type="password" name="repass" class="inp" id="repass" placeholder="confirm your plassword" required>
+                </div>
+                <div class="inp-row">
+                    <input type="checkbox" class="agree"><label for="agree"> I agree with the terms and conditions.</label>
+                </div>
+                Background Information 
+                <br>
+                <br>
+                Which properly describes your political/social stance?
+                <br>
+                <input type="radio" name="political view" value="left-leaning" /> Left-leaning
+                <input type= "radio" name="political view" value="right-leaning" /> Right-leaning
+                <br>
+                <br>
+                With which do you identify the most?
+                <br>
+                <input type="radio" name="background" value="humanities" /> Humanities <small>I love a good book</small>
+                <br>
+                <input type="radio" name="background" value="stem" /> STEM <small>Aren't atoms the best?</small>
+                <br>
+                <br>
+                <br>
+                <input name="submit" class="sub-btn" id="registerUser" value="Join the revolution">
+                <button type="submit" id="signInUser"></button>
+            </form>
+            <div class="path"></div>
+        </div>
+        <!-- Compiled and minified JavaScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/signup.js"></script>
+</body>
+</html>

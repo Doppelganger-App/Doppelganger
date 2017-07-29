@@ -2,19 +2,19 @@
 var React = require("react");
 
 //inclue all the sub-components
-var Header = require("./children/Header");
 var Footer = require("./children/Footer");
-
-//Helper for our AJAX calls 
-var helpers = require("./utils/helpers");
+var Header = require("./children/Header");
+var Logo = require("./children/Logo");
 
 //creating Main component
 var Main = React.createClass({
   render: function() {
   	return (
-  		<div className="container">
-  	      <Header />
-  	      {this.props.children}
+  		<div className="main-container">
+  		  <Header />
+  		  <div className="container">
+            <Logo />
+  	      </div>
   	      <Footer />
   	    </div>
   	);

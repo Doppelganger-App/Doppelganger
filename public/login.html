@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Anton|Days+One|Jura" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+    <title>Doppelganger</title>
+</head>
+
+<body style="background-color: white;">
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <a href="/" class="brand-logo masthead"><img src="assets/images/blackbkgdlogo.gif" id="logoImg" alt="head" /></a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li id="title"><a href="/">Doppelgänger</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/register">Register</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="/user/logout">Register</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>          
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <br><br><br><br>
+            <div class="col s6 offset-s3">
+                <form action="/user/login" method="post">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="example@example.com" type="text" class="validate" id="email" name="email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="password" class="validate" id="password" name="password">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="modal-close waves-effect btn" id="getUser">Login</button>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="modal-close waves-effect btn" id="sessionLogin" style="display: none;">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="assets/js/login.js"></script>
+</body>
+</html>
