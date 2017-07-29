@@ -34,6 +34,11 @@ var ProfileSchema = new Schema({
   saved_articles: [{
     title: String,
     link: String
+  }],
+  chatgroups: [{
+    name: String,
+    namespace: String,
+    topics: [String]
   }]
 });
 
