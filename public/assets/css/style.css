@@ -100,6 +100,8 @@ body, nav {
 .page-footer {
 	background-color: black;
 	margin-top: 100px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #logo {
@@ -135,6 +137,16 @@ button#getUser {
 li#currentUserName {
 	color: white;
 	margin-right: 20px;
+}
+
+body {
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+}
+
+#main {
+flex: 1 0 auto;
 }
 
 @media screen and (max-width: 1680px) {
