@@ -141,4 +141,11 @@ router.put("/joingroup/:email", function(req, res) {
   });
 });
 
+router.get("/groupinfo/:room", function(req, res) {
+  Chat.findOne({ namespace: req.params.room }, function(err, group) {
+    if (err) throw err;
+    res.json(group);
+  });
+});
+
 module.exports = router;

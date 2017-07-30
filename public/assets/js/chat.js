@@ -1,14 +1,21 @@
 $(document).ready(function() {
-  var room = localStorage.getItem('room')
-  // console.log(nsp);
+  var room = localStorage.getItem('room');
   var socket = io();
 
-  socket.on('connect', function() {
-    socket.emit('room', room);
-  });
+  //Page set up
+  getGroupInfo(room);
 
   var user = localStorage.getItem('username');
   console.log(user);
+  
+  $('#currentUserName').text("Welcome, " + user);
+
+  
+
+  //Chat Code
+  socket.on('connect', function() {
+    socket.emit('room', room);
+  });
 
   socket.emit('join', user);
 
@@ -24,8 +31,6 @@ $(document).ready(function() {
       console.log(newMessage);
       $('#newMessage').val("");
       Materialize.updateTextFields();
-
-      //socket emit
       socket.emit('chat message', msgObject);
     } else {
       Materialize.toast("Write a message before sending!", 3000);
@@ -48,4 +53,10 @@ $(document).ready(function() {
   $(window).on('beforeunload', function() {
     socket.emit('exit', user);
   });
+
+  function getGroupInfo(room) {
+    $.get("/api/groupinfo/" + room, function(data) {
+      console.log(data);
+    });
+  }
 });
