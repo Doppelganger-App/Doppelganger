@@ -22,6 +22,10 @@ router.get("/discuss", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/chat.html"));
 });
 
+router.get("/about", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/team.html"));
+});
+
 function isLoggedIn(req, res, next) {
   console.log("isLoggedIn function running");
     

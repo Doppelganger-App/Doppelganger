@@ -5,13 +5,8 @@ $(document).ready(function() {
 
   //Page set up
   signInUser();
-
-  // var user = localStorage.getItem('username');
-  // console.log(user);
   
   $('#currentUserName').text("Welcome, " + user);
-
-  
 
   //Chat Code
   socket.on('connect', function() {
@@ -19,6 +14,12 @@ $(document).ready(function() {
   });
 
   socket.emit('join', user);
+
+  $('#newMessage').keyup(function(event) {
+    if (event.keyCode === 13) {
+      $('#submitMessage').click();
+    }
+  });
 
   $('#submitMessage').on('click', function(event) {
     event.preventDefault();
@@ -60,20 +61,24 @@ $(document).ready(function() {
     var auth = $('<h6>');
     auth.text(msg.author);
 
+    var worddiv = $('<div>');
+    worddiv.addClass('worddiv');
+
     var bubble = $('<p>');
-    bubble.addClass('wordBubble')
     bubble.text(msg.message);
+    bubble.addClass('bubble');
 
     if (msg.author === user) {
-      bubdiv.addClass('col s7 offset-s5');
-      bubble.css('background-color', '#00695c').css('color', 'white');
-      bubdiv.append(bubble);
+      bubdiv.addClass('col s7 offset-s5 right-align');
+      worddiv.css('background-color', '#00695c').css('color', '#fafafa');
+      worddiv.append(bubble);
+      bubdiv.append(worddiv);
       row.append(bubdiv);
     } else {
       bubdiv.addClass('col s7');
-      bubble.css('background-color', '#cfd8dc');
-      auth.append(bubble);
-      bubdiv.append(auth);
+      worddiv.css('background-color', '#cfd8dc');
+      worddiv.append(bubble);
+      bubdiv.append(auth).append(worddiv);
       row.append(bubdiv);
     }
 
@@ -143,20 +148,24 @@ $(document).ready(function() {
         var auth = $('<h6>');
         auth.text(data.messages[i].author);
 
+        var worddiv = $('<div>');
+        worddiv.addClass('worddiv');
+
         var bubble = $('<p>');
-        bubble.addClass('wordBubble')
         bubble.text(data.messages[i].message);
+        bubble.addClass('bubble');
 
         if (data.messages[i].author === user) {
-          bubdiv.addClass('col s7 offset-s5');
-          bubble.css('background-color', '#00695c').css('color', 'white');
-          bubdiv.append(bubble);
+          bubdiv.addClass('col s7 offset-s5 right-align');
+          worddiv.css('background-color', '#00695c').css('color', '#fafafa');
+          worddiv.append(bubble);
+          bubdiv.append(worddiv);
           row.append(bubdiv);
         } else {
           bubdiv.addClass('col s7');
-          bubble.css('background-color', '#cfd8dc');
-          auth.append(bubble);
-          bubdiv.append(auth);
+          worddiv.css('background-color', '#cfd8dc');
+          worddiv.append(bubble);
+          bubdiv.append(auth).append(worddiv);
           row.append(bubdiv);
         }
 

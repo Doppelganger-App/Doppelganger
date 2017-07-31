@@ -16,13 +16,14 @@
   color: red;
 }
 
-.bubdiv {
-  width: 70%;
-}
-
-.wordBubble {
+.worddiv {
   padding: 10px;
   border-radius: 20px;
+  display: inline-block;
+}
+
+.bubble {
+  margin: 0px;
 }
 
 @media screen and (max-width: 1500px) {
