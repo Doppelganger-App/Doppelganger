@@ -1,5 +1,44 @@
 #chatbox {
-  border-style: solid;
-  border-color: black;
-  height: 700px;
+  height: 800px;
+  overflow: auto;
+}
+
+#sidebar {
+  margin-top: 30px;
+  background-color: #eceff1;
+}
+
+.present {
+  color: #00bfa5;
+}
+
+.absent {
+  color: red;
+}
+
+.bubdiv {
+  width: 70%;
+}
+
+.wordBubble {
+  padding: 10px;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 1500px) {
+  #chatbox {
+    height: 550px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  #chatbox {
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  #chatbox {
+    height: 300px;
+  }
 }

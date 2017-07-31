@@ -646,6 +646,7 @@ $(document).ready(function(){
             $('#chatList').prepend('<br>').prepend('<hr>').prepend(row);
         }
 
+        //Go to chat will now update who's present in chat.
         $('.goToChat').on('click', function(event) {
             event.preventDefault();
             var room = $(this).attr('data-namespace');
@@ -655,11 +656,16 @@ $(document).ready(function(){
             console.log(topics);
             
             localStorage.setItem('room', room);
-            localStorage.setItem('groupname', gname);
-            localStorage.setItem('topics', topics);
 
             window.location = "/discuss";
 
+            // $.ajax({
+            //     type: "PUT",
+            //     url: "/api/entergroup/" + room + "/" + localStorage.getItem("username"),
+            // }).done(function(data) {
+            //     console.log(data);
+            //     window.location = "/discuss";
+            // });
         });
 
     }
@@ -672,9 +678,8 @@ $(document).ready(function(){
 
     function appendOpenChatGroups(array) {
         for (var i = 0; i < array.length; i++) {
-            console.log(array[i].member_names.indexOf(localStorage.getItem('username')));
 
-            if (array[i].member_names.indexOf(localStorage.getItem('username')) === -1) {
+            if (array[i].member_array.indexOf(localStorage.getItem('username')) === -1) {
                 var row = $('<div>');
                 row.addClass('row');
 
