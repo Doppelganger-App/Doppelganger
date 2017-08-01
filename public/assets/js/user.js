@@ -504,7 +504,7 @@ $(document).ready(function(){
         row.addClass('row');
 
         var colOne = $('<div>');
-        colOne.addClass('col s9');
+        colOne.addClass('col s9 left-align');
 
         var title = $('<h6>');
 
@@ -546,7 +546,7 @@ $(document).ready(function(){
         row.addClass('row');
 
         var colOne = $('<div>');
-        colOne.addClass('col s9');
+        colOne.addClass('col s9 left-align');
 
         var title = $('<h6>');
 
@@ -599,7 +599,8 @@ $(document).ready(function(){
     $('.scrollspy').scrollSpy();
 
     $('.toc-wrapper').pushpin({
-      top: 800
+      top: 800,
+      bottom: 3000
     });
 
     //Code for Chat Groups
@@ -613,7 +614,7 @@ $(document).ready(function(){
             row.addClass('row');
 
             var colOne = $('<div>');
-            colOne.addClass('col s9');
+            colOne.addClass('col s9 left-align');
 
             var title = $('<a>');
             title.attr('data-namespace', array[i].namespace);
@@ -630,21 +631,26 @@ $(document).ready(function(){
 
             var colTwo = $('<div>');
             colTwo.addClass('col s3');
-            var delButton = $('<a>');
-            delButton.addClass('btn-floating btn waves-effect waves-light red delGroup');
-            delButton.attr('data-name', array[i].name);
+            var goButton = $('<a>');
+            goButton.addClass('btn-floating btn waves-effect waves-light goButton');
+            goButton.attr('data-name', array[i].name);
 
             var icon = $('<i>');
             icon.addClass('material-icons');
-            icon.text('delete');
-            delButton.append(icon);
+            icon.text('forum');
+            goButton.append(icon);
 
-            colTwo.append(delButton);
+            colTwo.append(goButton);
 
             row.append(colOne).append(colTwo);
 
             $('#chatList').prepend('<br>').prepend('<hr>').prepend(row);
         }
+
+        $('.goButton').on('click', function(event) {
+            event.preventDefault();
+            $(this).parent().prev().children().first().click();
+        });
 
         $('.goToChat').on('click', function(event) {
             event.preventDefault();
@@ -655,13 +661,24 @@ $(document).ready(function(){
             console.log(topics);
             
             localStorage.setItem('room', room);
-            localStorage.setItem('groupname', gname);
-            localStorage.setItem('topics', topics);
 
             window.location = "/discuss";
-
         });
 
+        //Delete group from queue, for future...
+        // $('.delGroup').on('click', function(event) {
+        //     event.preventDefault();
+        //     var gname = $(this).attr('data-name');
+
+        //     $.ajax({
+        //         type: "PUT",
+        //         url: "/api/leavegroup/" + gname + "/" + localStorage.getItem('email')
+        //     }).done(function(data) {
+        //         $(this).parent().parent().next().remove();
+        //         $(this).parent().parent().remove();
+        //         console.log(data);
+        //     });
+        // });
     }
 
     function getOpenChatGroups(lean) {
@@ -672,14 +689,13 @@ $(document).ready(function(){
 
     function appendOpenChatGroups(array) {
         for (var i = 0; i < array.length; i++) {
-            console.log(array[i].member_names.indexOf(localStorage.getItem('username')));
 
-            if (array[i].member_names.indexOf(localStorage.getItem('username')) === -1) {
+            if (array[i].member_array.indexOf(localStorage.getItem('username')) === -1) {
                 var row = $('<div>');
                 row.addClass('row');
 
                 var colOne = $('<div>');
-                colOne.addClass('col s9');
+                colOne.addClass('col s9 left-align');
 
                 var title = $('<h5>');
                 title.text(array[i].name);

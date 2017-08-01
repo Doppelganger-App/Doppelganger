@@ -32,7 +32,14 @@ var ChatSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Profile"
   }],
-  member_names: [String],
+  member_array: [String],
+  member_names: [{
+    name: String,
+    present: {
+      type: Boolean,
+      default: false
+    }
+  }],
   messages: [{
     author: String,
     message: String,
