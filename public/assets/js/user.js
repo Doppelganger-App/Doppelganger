@@ -25,7 +25,7 @@ $(document).ready(function(){
         var email = localStorage.getItem('email');
 
         $.get("/api/completestorage/" + email, function(data) {
-            console.log(data);
+            // console.log(data);
             $('#currentUserName').text("Welcome, " + data.name);
 
             $('#videoList').empty();
@@ -46,7 +46,7 @@ $(document).ready(function(){
                 event.preventDefault();
                 var itemType = $(this).attr('data-type');
                 var itemId = $(this).attr('data-id');
-                console.log("completeStorage click");
+                // console.log("completeStorage click");
 
                 $(this).parent().parent().html("<h6>deleted</h6>").css('color', 'red').attr('id', itemId);
                 setTimeout(function() {
@@ -239,10 +239,10 @@ $(document).ready(function(){
             $('.saveBtn').on('click', function(event) {
                 event.preventDefault();
 
-                console.log("inside");
+                // console.log("inside");
                 var videoTitle = $(this).parent().prev().children().first().text();
                 var videoLink = $(this).prev().attr('href');
-                console.log(videoTitle, videoLink);
+                // console.log(videoTitle, videoLink);
 
                 var saveObject = {
                     title: videoTitle,
@@ -250,7 +250,7 @@ $(document).ready(function(){
                 }
 
                 var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
-                console.log(queryUrl);
+                // console.log(queryUrl);
 
                 saveItem(queryUrl, saveObject, "Video");
             });
@@ -322,10 +322,10 @@ $(document).ready(function(){
 
             $('.saveBtn').on('click', function(event) {
                 event.preventDefault();
-                console.log("inside");
+                // console.log("inside");
                 var videoTitle = $(this).parent().prev().children().first().text();
                 var videoLink = $(this).prev().attr('href');
-                console.log(videoTitle, videoLink);
+                // console.log(videoTitle, videoLink);
 
                 var saveObject = {
                     title: videoTitle,
@@ -333,7 +333,7 @@ $(document).ready(function(){
                 }
 
                 var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
-                console.log(queryUrl);
+                // console.log(queryUrl);
 
                 saveItem(queryUrl, saveObject, "Video");
             });
@@ -393,10 +393,10 @@ $(document).ready(function(){
 
             $('.saveBtn').on('click', function(event) {
                 event.preventDefault();
-                console.log("inside");
+                // console.log("inside");
                 var articleTitle = $(this).parent().prev().children().first().text();
                 var articleLink = $(this).prev().attr('href');
-                console.log(articleTitle, articleLink);
+                // console.log(articleTitle, articleLink);
 
                 var saveObject = {
                     title: articleTitle,
@@ -404,7 +404,7 @@ $(document).ready(function(){
                 }
 
                 var queryUrl = "/api/savearticle/" + localStorage.getItem('email');
-                console.log(queryUrl);
+                // console.log(queryUrl);
 
                 saveItem(queryUrl, saveObject, "Article");
             });
@@ -496,7 +496,7 @@ $(document).ready(function(){
             url: queryUrl,
             data: object
         }).done(function(data) {
-            console.log(data);
+            // console.log(data);
             Materialize.toast(type + " saved!", 4000);
             completeStorage();
         });
@@ -619,8 +619,8 @@ $(document).ready(function(){
     //Code for Chat Groups
 
     function fillChatGroups(array) {
-        console.log("inside");
-        console.log(array);
+        // console.log("inside");
+        // console.log(array);
         $('#chatList').empty();
 
         for (var i = 0; i < array.length; i++) {
@@ -671,8 +671,8 @@ $(document).ready(function(){
             var room = $(this).attr('data-namespace');
             var gname = $(this).text();
             var topics = $(this).next().text();
-            console.log(gname);
-            console.log(topics);
+            // console.log(gname);
+            // console.log(topics);
             
             localStorage.setItem('room', room);
 
@@ -770,7 +770,7 @@ $(document).ready(function(){
                 url: "/api/joingroup/" + localStorage.getItem('email'),
                 data: joinObject
             }).done(function(data) {
-                console.log(data);
+                // console.log(data);
                 Materialize.toast(joinObject.name + " has been added to your Chat Groups in your sidebar!", 7000);
                 fillChatGroups(data);
             });
