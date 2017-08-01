@@ -102,12 +102,12 @@ router.post("/creategroup", function(req, res) {
 router.get("/getgroups/:lean", function(req, res) {
   console.log(req.params.lean);
   if (req.params.lean === "left-leaning") {
-    Chat.find({}).where('left_members').lt(3).limit(5).sort({created_at: -1}).exec(function(err, docs) {
+    Chat.find({}).where('left_members').lt(3).limit(3).sort({created_at: -1}).exec(function(err, docs) {
       if (err) throw err;
       res.json(docs);
     });
   } else {
-    Chat.find({}).where('right_members').lt(3).limit(5).sort({created_at: -1}).exec(function(err, docs) {
+    Chat.find({}).where('right_members').lt(3).limit(3).sort({created_at: -1}).exec(function(err, docs) {
       if (err) throw err;
       res.json(docs);
     });
@@ -142,6 +142,10 @@ router.put("/joingroup/:email", function(req, res) {
   });
 });
 
+// Leaving group, for the future...
+// router.put("/leavegroup/:groupname/:email", function(req, res) {
+// });
+
 router.put("/entergroup/:room/:username", function(req, res) {
   Chat.findOne({ namespace: req.params.room }, function(err, group) {
 
@@ -153,7 +157,7 @@ router.put("/entergroup/:room/:username", function(req, res) {
       }
     }
 
-    Chat.update({ _id: group._id, 'member_names._id': memberId }, { $set: {'member_names.$.present': true }}, function (err, update) {
+    Chat.update({ _id: group._id, 'member_names._id': memberId }, { $set: {'member_names.$.present': true }}, function(err, update) {
       if (err) throw err;
       res.json(update);
     });

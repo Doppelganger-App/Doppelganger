@@ -18,13 +18,12 @@
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li id="title"><a href="/">Doppelgänger</a></li> 
                     <li><a href="/about">About</a></li>
-                </ul>       
-                <ul id="nav-mobile" class="right show-on-large">
-                    <li id="currentUserName"></li>
-                </ul>        
+                </ul>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li id="currentUserName"></li>
                     <li><a href="/user/logout">Log Out</a></li>
+                </ul>
+                <ul id="nav-mobile" class="right">
+                    <li id="currentUserName"></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="/user/logout">Log Out</a></li>
@@ -33,7 +32,7 @@
                     <li><a href="#savedItems">Your Saved Items</a></li>
                 </ul>
             </div>
-        </nav>  
+        </nav>
 <div class="container" id="main">
     <div class="row">
 
@@ -71,15 +70,15 @@
                     <h4 class="divTitles">Your Saved Items</h4>
                     <ul class="collapsible popout savedList" data-collapsible="accordion">
                         <li>
-                            <div class="collapsible-header"><i class="material-icons">video_library</i>Saved Videos</div>
+                            <div class="collapsible-header left-align"><i class="material-icons">video_library</i>Saved Videos</div>
                             <div class="collapsible-body links" id="videoList"></div>
                         </li>
                         <li>
-                            <div class="collapsible-header"><i class="material-icons">library_books</i>Saved Articles</div>
+                            <div class="collapsible-header left-align"><i class="material-icons">library_books</i>Saved Articles</div>
                             <div class="collapsible-body links" id="articleList"></div>
                         </li>
                         <li>
-                          <div class="collapsible-header"><i class="material-icons">group</i>Chat Groups</div>
+                          <div class="collapsible-header left-align"><i class="material-icons">group</i>Chat Groups</div>
                           <div class="collapsible-body links" id="chatList"></div>
                         </li>
                     </ul>

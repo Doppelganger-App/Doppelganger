@@ -7,6 +7,9 @@ $(document).ready(function() {
   signInUser();
   
   $('#currentUserName').text("Welcome, " + user);
+  
+  //side-navbar on small screen
+  $(".button-collapse").sideNav();
 
   //Chat Code
   socket.on('connect', function() {
@@ -118,25 +121,34 @@ $(document).ready(function() {
       $('#topics').text('Topics: ' + data.topics.toString().replace(/,/g, ", "));
       $('#memberCollection').empty();
 
-      for (var i = 0; i < data.member_names.length; i++) {
-        if (data.member_names[i].name !== user) {
-          var li = $('<li>');
-          li.addClass('collection-item');
-          li.text(data.member_names[i].name);
+      if (data.member_names.length === 1) {
+        var li = $('<li>');
+        li.addClass('collection-item');
+        li.text("No other members yet.");
+        $('#memberCollection').append(li);
+        
+      } else {
 
-          var icon = $('<i>');
-          if (data.member_names[i].present) {
-            icon.addClass('material-icons secondary-content present');
-            icon.text('person');
-          } else {
-            icon.addClass('material-icons secondary-content absent');
-            icon.text('perm_identity');
+        for (var i = 0; i < data.member_names.length; i++) {
+          if (data.member_names[i].name !== user) {
+            var li = $('<li>');
+            li.addClass('collection-item');
+            li.text(data.member_names[i].name);
+
+            var icon = $('<i>');
+            if (data.member_names[i].present) {
+              icon.addClass('material-icons secondary-content present');
+              icon.text('person');
+            } else {
+              icon.addClass('material-icons secondary-content absent');
+              icon.text('perm_identity');
+            }
+
+            li.append(icon);
           }
 
-          li.append(icon);
+          $('#memberCollection').append(li);
         }
-
-        $('#memberCollection').append(li);
       }
 
       for (var i = 0; i < data.messages.length; i++) {
