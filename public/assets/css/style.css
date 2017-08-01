@@ -5,6 +5,7 @@
 
 .widget {
 	font-family: "Jura", sans-serif;
+	margin: 20px;
 }
 
 .masthead, .nav-wrapper, .title {
@@ -41,6 +42,10 @@
 
 .termBtns {
 	margin:5px;
+	border-radius: 15px;
+}
+
+.chatBtn {
 	border-radius: 15px;
 }
 
