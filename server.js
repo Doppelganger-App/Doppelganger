@@ -27,7 +27,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Use this for test: "mongodb://localhost/dgtdb"
 // Use this when ready to deploy: process.env.MONGODB_URI
-mongoose.connect("mongodb://localhost/dgtdb", { useMongoClient: true });
+mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 var db = mongoose.connection;
 
 db.on("error", function(error) {
