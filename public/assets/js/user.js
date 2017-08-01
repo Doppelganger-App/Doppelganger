@@ -462,23 +462,26 @@ $(document).ready(function(){
 
     function makeWidgetOne(source) {
 
-        var widget1 = $("<iframe>");
-        widget1.addClass("widget");
-        widget1.attr("src", source);
-        widget1.attr("frameborder", 0);
-        widget1.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height:300px;border:0px");
+        var widget1 = $("<div class='col l12 m6 s12'>");
+        var widget = $("<iframe>");
+        widget.addClass("widget");
+        widget.attr("src", source);
+        widget.attr("frameborder", 0);
+        widget.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height:300px;border:0px");
+        widget1.append(widget);
 
         $("#podcastDiv").append(widget1);
-        $("#podcastDiv").append("<br>");
     }
 
     function makeWidgetTwo(source) {
 
-        var widget2 = $("<iframe>");
-        widget2.addClass("widget");
-        widget2.attr("src", source);
-        widget2.attr("frameborder", 0);
-        widget2.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
+        var widget2 = $("<div class='col l12 m6 s12'>");
+        var widget = $("<iframe>");
+        widget.addClass("widget");
+        widget.attr("src", source);
+        widget.attr("frameborder", 0);
+        widget.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
+        widget2.append(widget);
 
         $("#podcastDiv").append(widget2);
     }
