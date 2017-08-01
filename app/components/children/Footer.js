@@ -22,7 +22,7 @@ var Footer = React.createClass({
 		      </div>
 		      <div className="footer-copyright center-align">
 		        <div className="container">
-		        © 2017 Doppelgänger Team - to learn more about us, check out our <a href="/about">About</a> page.
+		        © 2017 Doppelgänger Team - to learn more about us, check out our <a href="/team.html">About</a> page.
 		        </div>
 		      </div>
 		    </footer>
