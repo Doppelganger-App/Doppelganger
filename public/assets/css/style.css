@@ -64,9 +64,14 @@
 	font-family: "Days One", sans-serif;
 }
 
+.goToChat {
+	cursor: pointer;
+}
+
 #youTubeDiv {
 	float:left;
 	color:black;
+	height: 3300px;
 	margin-left:5%;
 	margin-right:5%;
 	margin-top: 20px;

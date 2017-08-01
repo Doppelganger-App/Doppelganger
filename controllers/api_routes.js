@@ -66,7 +66,8 @@ router.post("/creategroup", function(req, res) {
       newChat.namespace = req.body.name.toLowerCase().replace(/ /g, "_");
       newChat.topics = req.body.topics;
       newChat.admins.push(req.body.admins);
-      newChat.member_names.push(req.body.memberName);
+      newChat.member_array.push(req.body.memberName);
+      newChat.member_names.push({name: req.body.memberName});
 
       if (req.body.politics === "left-leaning") {
         newChat.left_members = 1;
@@ -101,12 +102,12 @@ router.post("/creategroup", function(req, res) {
 router.get("/getgroups/:lean", function(req, res) {
   console.log(req.params.lean);
   if (req.params.lean === "left-leaning") {
-    Chat.find({}).where('left_members').lt(3).limit(5).sort({created_at: -1}).exec(function(err, docs) {
+    Chat.find({}).where('left_members').lt(3).limit(3).sort({created_at: -1}).exec(function(err, docs) {
       if (err) throw err;
       res.json(docs);
     });
   } else {
-    Chat.find({}).where('right_members').lt(3).limit(5).sort({created_at: -1}).exec(function(err, docs) {
+    Chat.find({}).where('right_members').lt(3).limit(3).sort({created_at: -1}).exec(function(err, docs) {
       if (err) throw err;
       res.json(docs);
     });
@@ -119,7 +120,7 @@ router.put("/joingroup/:email", function(req, res) {
 
     if (profile.political_lean === "left-leaning") {
       Chat.findOneAndUpdate({ name: req.body.name }, {
-        $push: {member_names: profile.name, members: profile._id},
+        $push: {member_array: profile.name, member_names: {name: profile.name}, members: profile._id},
         $inc: {left_members: 1, total_members: 1}
       },
       {new: true},
@@ -129,7 +130,7 @@ router.put("/joingroup/:email", function(req, res) {
       });
     } else {
       Chat.findOneAndUpdate({ name: req.body.name }, {
-        $push: {member_names: profile.name, members: profile._id},
+        $push: {member_array: profile.name, member_names: {name: profile.name}, members: profile._id},
         $inc: {right_members: 1, total_members: 1}
       },
       {new: true},
@@ -138,6 +139,60 @@ router.put("/joingroup/:email", function(req, res) {
         res.json(profile.chatgroups);
       });
     }
+  });
+});
+
+// Leaving group, for the future...
+// router.put("/leavegroup/:groupname/:email", function(req, res) {
+// });
+
+router.put("/entergroup/:room/:username", function(req, res) {
+  Chat.findOne({ namespace: req.params.room }, function(err, group) {
+
+    var memberId;
+
+    for (var i = 0; i < group.member_names.length; i++) {
+      if (group.member_names[i].name === req.params.username) {
+        memberId = group.member_names[i]._id;
+      }
+    }
+
+    Chat.update({ _id: group._id, 'member_names._id': memberId }, { $set: {'member_names.$.present': true }}, function(err, update) {
+      if (err) throw err;
+      res.json(update);
+    });
+  });
+});
+
+router.get("/groupinfo/:room", function(req, res) {
+  Chat.findOne({ namespace: req.params.room }, function(err, group) {
+    if (err) throw err;
+    res.json(group);
+  });
+});
+
+router.put("/entermessage/:room", function(req, res) {
+  Chat.findOneAndUpdate({ namespace: req.params.room }, { $push: { messages: req.body }}, { new: true }, function(err, update) {
+    if (err) throw err;
+    res.json(update);
+  });
+});
+
+router.put("/exitgroup/:room/:username", function(req, res) {
+  Chat.findOne({ namespace: req.params.room }, function(err, group) {
+
+    var memberId;
+
+    for (var i = 0; i < group.member_names.length; i++) {
+      if (group.member_names[i].name === req.params.username) {
+        memberId = group.member_names[i]._id;
+      }
+    }
+
+    Chat.update({ _id: group._id, 'member_names._id': memberId }, { $set: {'member_names.$.present': false }}, function (err, update) {
+      if (err) throw err;
+      res.json("exited");
+    });
   });
 });
 
