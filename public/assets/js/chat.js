@@ -42,7 +42,7 @@ $(document).ready(function() {
         url: "/api/entermessage/" + room,
         data: msgObject
       }).done(function(data) {
-        console.log(data);
+        console.log("entered");
       });
 
     } else {
@@ -99,7 +99,7 @@ $(document).ready(function() {
       type: "PUT",
       url: "/api/exitgroup/" + room + "/" + user
     }).done(function(data) {
-      console.log(data);
+      // console.log("data");
       socket.emit('exit', user);
     });
   });
@@ -109,14 +109,14 @@ $(document).ready(function() {
       type: "PUT",
       url: "/api/entergroup/" + room + "/" + user
     }).done(function(data) {
-      console.log(data);
+      // console.log(data);
       getGroupInfo(); 
     });
   }
 
   function getGroupInfo() {
     $.get("/api/groupinfo/" + room, function(data) {
-      console.log(data);
+      // console.log(data);
       $('#groupName').text(data.name);
       $('#topics').text('Topics: ' + data.topics.toString().replace(/,/g, ", "));
       $('#memberCollection').empty();
