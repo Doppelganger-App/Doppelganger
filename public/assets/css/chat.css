@@ -1,7 +1,7 @@
 #chatbox {
-  border-style: solid;
-  border-color: black;
-  height: 700px;
+  padding-top: 5px;
+  height: 800px;
+  overflow: auto;
 }
 
 #sidebar {

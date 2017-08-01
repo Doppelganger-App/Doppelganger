@@ -600,16 +600,27 @@ $(document).ready(function(){
 
     //scrollspy for podcasts and saved items on smaller screens
     $('.scrollspy').scrollSpy();
-
+    
     $('.toc-wrapper').pushpin({
-      top: 800,
-      bottom: 3000
+        top: 800,
+        bottom: 3000
     });
+    
+    function widthSize() {
+        if ($(window).width() < 1030) {
+            $('.toc-wrapper').pushpin('remove');
+        }
+    }
+
+    widthSize();
+
+    $(window).resize(widthSize);
 
     //Code for Chat Groups
 
     function fillChatGroups(array) {
-
+        console.log("inside");
+        console.log(array);
         $('#chatList').empty();
 
         for (var i = 0; i < array.length; i++) {
@@ -691,6 +702,8 @@ $(document).ready(function(){
     }
 
     function appendOpenChatGroups(array) {
+        $('#openChatGroups').empty();
+
         for (var i = 0; i < array.length; i++) {
 
             if (array[i].member_array.indexOf(localStorage.getItem('username')) === -1) {

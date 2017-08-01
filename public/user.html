@@ -20,7 +20,7 @@
                 <a href="/" class="brand-logo masthead"><img src="assets/images/blackbkgdlogo.gif" id="logoImg" alt="head" /></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li id="title"><a href="/">Doppelgänger</a></li>
-                    <li><a href="/team.html">About</a></li>
+                    <li><a href="/about">About</a></li>
                 </ul>       
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/user/logout">Log Out</a></li>
@@ -30,7 +30,7 @@
                 </ul>        
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="/user/logout">Log Out</a></li>
-                    <li><a href="/team.html">About</a></li>
+                    <li><a href="/about">About</a></li>
                     <li><a href="#podcastDiv">Podcasts</a></li>
                     <li><a href="#bottom">Your Saved Items</a></li>
                 </ul>
@@ -65,10 +65,12 @@
         </div>
 
         <div class="col l4 s12">
-            <div id="podcastDiv" class="section scrollspy center-align">
-                <h4 class="divTitles">Podcasts</h4>
+            <div class="row">
+                <div id="podcastDiv" class="section scrollspy center-align">
+                    <h4 class="divTitles">Podcasts</h4>
+                </div>
             </div>
-            <div id="savedItems" class="section scrollspy hide-on-large-only center-align">
+            <!-- <div id="savedItems" class="section scrollspy hide-on-large-only center-align">
                 <h4 class="divTitles">Your Saved Items</h4>
                 <ul class="collapsible popout savedList" data-collapsible="accordion">
                     <li>
@@ -88,27 +90,29 @@
                 <div id="openChatGroups">
                 </div>
             </div>  
-            <div id="bottom"></div>          
-            <div class="toc-wrapper center-align hide-on-med-and-down">
-                <div id="savedItems" class="section scrollspy hide-on-small-only">
-                    <h4 class="divTitles">Your Saved Items</h4>
-                    <ul class="collapsible popout savedList" data-collapsible="accordion">
-                        <li>
-                            <div class="collapsible-header left-align"><i class="material-icons">video_library</i>Saved Videos</div>
-                            <div class="collapsible-body links" id="videoList"></div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header left-align"><i class="material-icons">library_books</i>Saved Articles</div>
-                            <div class="collapsible-body links" id="articleList"></div>
-                        </li>
-                        <li>
-                          <div class="collapsible-header left-align"><i class="material-icons">group</i>Chat Groups</div>
-                          <div class="collapsible-body links" id="chatList"></div>
-                        </li>
-                    </ul>
-                    <a class="waves-effect red waves-light btn-large chatBtn" id="openGroup">Start a new Chat Group</a>
-
-                    <div id="openChatGroups">
+            <div id="bottom"></div> -->
+            <div class="row">    
+                <div class="toc-wrapper center-align">
+                    <div id="savedItems" class="section scrollspy">
+                        <h4 class="divTitles">Your Saved Items</h4>
+                        <ul class="collapsible popout savedList" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header left-align"><i class="material-icons">video_library</i>Saved Videos</div>
+                                <div class="collapsible-body links" id="videoList"></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header left-align"><i class="material-icons">library_books</i>Saved Articles</div>
+                                <div class="collapsible-body links" id="articleList"></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header left-align"><i class="material-icons">group</i>Chat Groups</div>
+                              <div class="collapsible-body links" id="chatList"></div>
+                            </li>
+                        </ul>
+                        <h5>Start or Join a Chat Group</h5>
+                        <a class="waves-effect red waves-light btn-large chatBtn" id="openGroup">Start a new Chat Group</a>
+                        <div id="openChatGroups">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -159,7 +163,7 @@
 <footer class="page-footer">
   <div class="footer-copyright center-align">
     <div class="container">
-    © 2017 Doppelgänger Team - to learn more about us, check out our <a href="/team.html">About</a> page.
+    © 2017 Doppelgänger Team - to learn more about us, check out our <a href="/about">About</a> page.
     </div>
   </div>
 </footer>   
