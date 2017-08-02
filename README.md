@@ -1,7 +1,7 @@
 # Doppelganger
-** Doppelgänger allows users to create an account and specify two important pieces of information about themselves: their political leaning and their general background (either STEM or humanities). Once they log in, they are provided with resources in both areas that are geared toward the opposite types. Resources provided include: YouTube videos on various topics, Apple podcasts, and news headlines. **
+Doppelgänger allows users to create an account and specify two important pieces of information about themselves: their political leaning and their general background (either STEM or humanities). Once they log in, they are provided with resources in both areas that are geared toward the opposite types. Resources provided include: YouTube videos on various topics, Apple podcasts, and news headlines.
 
-** The goal of the application is to broaden the users' minds to other perspectives and allow them the opportunity to meet a different side of themselves and the world. **
+The goal of the application is to broaden the users' minds to other perspectives and allow them the opportunity to meet a different side of themselves and the world.
 
 # How It Works
 
