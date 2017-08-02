@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <!--favicon-->
+    <link rel="icon" href="assets/images/favicon.png">
+    <meta name="viewport" content="width=device-width" />
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
@@ -10,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/chat.css">
     <link href="https://fonts.googleapis.com/css?family=Abel|Anton|Days+One|Jura" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Anton|Days+One|Jura" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <title>Doppelganger</title>
 </head>
@@ -18,51 +22,76 @@
 
     <nav>
         <div class="nav-wrapper">
-            <ul id="nav-mobile" class="left">
-                <li><a href="/" class="brand-logo masthead"><img src="./assets/images/blackbkgdlogo.gif" id="logoImg" alt="head"></a></li>
-                <li id="title"><a href="/">Doppelgänger</a></li>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="/" class="brand-logo masthead"><img src="assets/images/blackbkgdlogo.gif" id="logoImg" alt="head" /></a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li id="title"><a href="/">Doppelgänger</a></li> 
                 <li><a href="/about">About</a></li>
             </ul>
-            <ul id="nav-mobile" class="right">
-                <li id="currentUserName" style="color: white;"></li>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/dashboard">Dashboard</a></li>
                 <li><a href="/user/logout">Log Out</a></li>
+            </ul>
+            <ul id="nav-mobile" class="right">
+                <li id="currentUserName"></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="/user/logout">Log Out</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/about">About</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
         <div class="row">
-            <div class="col s9">
-                <div class="row">
+            <div class="col s12 m12 l9">
+                <!-- <div class="row"> -->
                     <div class="col s8 offset-s2">
-                        <h3>Chat Group</h3>
-                        <h4 id="topics">Topics...</h4>
+                        <h3 class="center-align" id="groupName"></h3>
+                        <h5 class="center-align" id="topics"></h5>
                     </div>
-                </div>
-                <div class="row">
+                <!-- </div> -->
+                <!-- <div class="row"> -->
                     <div class="col s12">
                         <div class="row">
+                            <div class="divider"></div>
                             <div class="col s12" id="chatbox">
                             </div>
+
                         </div>
                         <div class="row">
-                            <div class="input-field col s12">
-                              <textarea id="newMessage" class="materialize-textarea"></textarea>
-                              <label for="newMessage">Send a Message</label>
+                            <div class="divider"></div>
+                            <div class="input-field col m11 s10">
+                              <textarea id="newMessage" class="materialize-textarea" placeholder="type your message..."></textarea>
+                              <!-- <label for="newMessage">Send a Message</label> -->
+                            </div>
+                            <div class="col m1 s1 center-align">
+                                <br><br>
+                                <a class="waves-effect waves-light btn-floating tooltipped" id="submitMessage" data-position="top" data-delay="50" data-tooltip="send message"><i class="material-icons left">chat</i></a>
                             </div>
                         </div>
-                        <div clss="row">
-                            
-                            <a class="waves-effect waves-light btn" id="submitMessage"><i class="material-icons left">chat</i>Send</a>
-                            
-                        </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
-            <div class="col s3">
+            <div class="col s12 m12 l3" id="sidebar">
+                <br>
+                <h5 class="center-align" id="members">Group Members</h5>
+                <br>
+                <ul class="collection" id="memberCollection">
+                </ul>
             </div>
         </div>
     </div>
+
+    <footer class="page-footer">
+      <div class="footer-copyright center-align">
+        <div class="container">
+        © 2017 Doppelgänger Team - to learn more about us, check out our <a href="/about">About</a> page.
+        </div>
+      </div>
+    </footer>
+    
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>

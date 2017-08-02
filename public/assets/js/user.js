@@ -25,7 +25,7 @@ $(document).ready(function(){
         var email = localStorage.getItem('email');
 
         $.get("/api/completestorage/" + email, function(data) {
-            console.log(data);
+            // console.log(data);
             $('#currentUserName').text("Welcome, " + data.name);
 
             $('#videoList').empty();
@@ -46,7 +46,7 @@ $(document).ready(function(){
                 event.preventDefault();
                 var itemType = $(this).attr('data-type');
                 var itemId = $(this).attr('data-id');
-                console.log("completeStorage click");
+                // console.log("completeStorage click");
 
                 $(this).parent().parent().html("<h6>deleted</h6>").css('color', 'red').attr('id', itemId);
                 setTimeout(function() {
@@ -85,11 +85,11 @@ $(document).ready(function(){
 
             makeNewsButtons(newsTerms);
         
-        var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetOneSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
         
             makeWidgetOne(widgetOneSource);
 
-        var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetTwoSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
                 
             makeWidgetTwo(widgetTwoSource);
         
@@ -111,11 +111,11 @@ $(document).ready(function(){
         
             makeNewsButtons(newsTerms);
 
-        var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetOneSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1060761517,1057255460,135067274,158004641,1192761536,1200361736,1188724250,377785090,74840240,1235583717&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetOne(widgetOneSource);
 
-        var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Feeling Techie&m=podcast&e=podcast&w=250&h=300&ids=617416468,665964031,959773870,326120877,458066753,955198749,842818711,360889910,561470997,305253468&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetTwoSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Feeling Techie&m=podcast&e=podcast&w=250&h=300&ids=617416468,665964031,959773870,326120877,458066753,955198749,842818711,360889910,561470997,305253468&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetTwo(widgetTwoSource);
 
@@ -137,11 +137,11 @@ $(document).ready(function(){
 
             makeNewsButtons(newsTerms);
 
-        var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetOneSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=250500859,201671138,953290300,124960485,300238066,1010962669,1168154281,354668519,1257821731,304531053&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetOne(widgetOneSource);
 
-        var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=620967489,418152882,1112194905,1126543994,1155318497,635045292,965293227,209377688,1065050908,699723863&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetTwoSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Politics Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=620967489,418152882,1112194905,1126543994,1155318497,635045292,965293227,209377688,1065050908,699723863&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetTwo(widgetTwoSource);
     }
@@ -162,11 +162,11 @@ $(document).ready(function(){
         
             makeNewsButtons(newsTerms);
 
-        var widgetOneSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1065051273,122415315,568115978,583661711,309787436,259917817,1065050908,1069889359,564302516,563316406,1183123221&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetOneSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Culture Rediscovered&m=podcast&e=podcast&w=250&h=300&ids=1065051273,122415315,568115978,583661711,309787436,259917817,1065050908,1069889359,564302516,563316406,1183123221&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetOne(widgetOneSource);
 
-        var widgetTwoSource = "http://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Science&m=podcast&e=podcast&w=250&h=300&ids=470623801,73329284,325404506,278981407,169540430,343580439,128859062,350359306,151485804,152249110&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
+        var widgetTwoSource = "https://widgets.itunes.apple.com/widget.html?c=us&brc=FFFFFF&blc=FFFFFF&trc=FFFFFF&tlc=FFFFFF&d=Suggested Podcasts&t=Science&m=podcast&e=podcast&w=250&h=300&ids=470623801,73329284,325404506,278981407,169540430,343580439,128859062,350359306,151485804,152249110&wt=playlist&partnerId=&affiliate_id=&at=&ct=";
 
             makeWidgetTwo(widgetTwoSource);
     
@@ -239,10 +239,10 @@ $(document).ready(function(){
             $('.saveBtn').on('click', function(event) {
                 event.preventDefault();
 
-                console.log("inside");
+                // console.log("inside");
                 var videoTitle = $(this).parent().prev().children().first().text();
                 var videoLink = $(this).prev().attr('href');
-                console.log(videoTitle, videoLink);
+                // console.log(videoTitle, videoLink);
 
                 var saveObject = {
                     title: videoTitle,
@@ -250,7 +250,7 @@ $(document).ready(function(){
                 }
 
                 var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
-                console.log(queryUrl);
+                // console.log(queryUrl);
 
                 saveItem(queryUrl, saveObject, "Video");
             });
@@ -310,7 +310,7 @@ $(document).ready(function(){
                     link.append(url);
 
                 var saveBtn = $("<button>");
-                    saveBtn.addClass("waves-effect waves-light red btn saveBtn");
+                    saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
                     saveBtn.html("Save for Later");
                     link.append(saveBtn);
                     youTubeResults.append(cardVideo);
@@ -322,10 +322,10 @@ $(document).ready(function(){
 
             $('.saveBtn').on('click', function(event) {
                 event.preventDefault();
-                console.log("inside");
+                // console.log("inside");
                 var videoTitle = $(this).parent().prev().children().first().text();
                 var videoLink = $(this).prev().attr('href');
-                console.log(videoTitle, videoLink);
+                // console.log(videoTitle, videoLink);
 
                 var saveObject = {
                     title: videoTitle,
@@ -333,7 +333,7 @@ $(document).ready(function(){
                 }
 
                 var queryUrl = "/api/savevideo/" + localStorage.getItem('email');
-                console.log(queryUrl);
+                // console.log(queryUrl);
 
                 saveItem(queryUrl, saveObject, "Video");
             });
@@ -393,10 +393,10 @@ $(document).ready(function(){
 
             $('.saveBtn').on('click', function(event) {
                 event.preventDefault();
-                console.log("inside");
+                // console.log("inside");
                 var articleTitle = $(this).parent().prev().children().first().text();
                 var articleLink = $(this).prev().attr('href');
-                console.log(articleTitle, articleLink);
+                // console.log(articleTitle, articleLink);
 
                 var saveObject = {
                     title: articleTitle,
@@ -404,7 +404,7 @@ $(document).ready(function(){
                 }
 
                 var queryUrl = "/api/savearticle/" + localStorage.getItem('email');
-                console.log(queryUrl);
+                // console.log(queryUrl);
 
                 saveItem(queryUrl, saveObject, "Article");
             });
@@ -418,68 +418,6 @@ $(document).ready(function(){
         var q = $(this).attr("data-term");
         var searchTerm = q.replace(/ /g, "-");
         newsCall(searchTerm);
-    });
-
-
-    //book user search
-    $(document).on("click", ".bookSearch", function(event) {
-        var q = $("#bookTerm").val().trim();
-        console.log(q);
-        var searchTerm = q.replace(/ /g, "+");
-        var queryURL = "https://www.googleapis.com/books/v1/volumes?q="+ searchTerm;
-
-        $.ajax({
-             type: "GET",
-             url: queryURL
-         })
-        .done(function(data) {
-            console.log(data); 
-
-            for (var i = 0; i < 5; i++) {
-
-                var bookResults = $("<div class='card'>");
-                var cardImage = $("<div class='card-image'>");
-                var image = $("<img>");
-                    image.attr("id", "resultImg");
-                    image.attr("src", data.items[i].volumeInfo.imageLinks.thumbnail); 
-                    cardImage.append(image);
-                    bookResults.append(cardImage);
-
-                var cardBody = $("<div class='card-content'>");  
-
-                var title = $("<h6>");
-                    title.text(data.items[i].volumeInfo.title);
-
-                var description = $("<p>");
-                    description.addClass("description");
-                    description.text("By " + data.items[i].volumeInfo.authors[0]);
-                    cardBody.append(title);
-                    cardBody.append(description);
-
-                var link = $("<div class='card-action'>");
-
-                var url = $("<a>");
-                    url.addClass("url");
-                    url.attr("href", data.items[i].volumeInfo.previewLink);
-                    url.attr("target", "_blank");
-                    url.text("Preview the Book");
-                    link.append(url);
-
-                var saveBtn = $("<button>");
-                    saveBtn.addClass("waves-effect waves-light red btn-large saveBtn");
-                    saveBtn.html("Save for Later");  
-                    link.append(saveBtn);          
-                    bookResults.append(cardBody);
-                    bookResults.append(link);
-
-                $("#youTubeDiv").html(bookResults);
-
-            }
-
-
-            $(".bookSearch").empty();
-        });
-
     });
 
 
@@ -510,18 +448,6 @@ $(document).ready(function(){
         }
     }
 
-    function makeBookButtons(terms) {
-        $(".bButtonsDiv").empty();
-
-        for (var i = 0; i < terms.length; i++) {
-            var b = $("<a>");
-            b.addClass("waves-effect waves-light red btn-large termBtns bBtns");
-            b.attr("data-term", terms[i]);
-            b.text(terms[i]);
-            $(".bButtonsDiv").append(b);
-        }
-    }
-
     function makeNewsButtons(terms) {
         $(".nButtonsDiv").empty();
 
@@ -536,23 +462,26 @@ $(document).ready(function(){
 
     function makeWidgetOne(source) {
 
-        var widget1 = $("<iframe>");
-        widget1.addClass("widget");
-        widget1.attr("src", source);
-        widget1.attr("frameborder", 0);
-        widget1.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height:300px;border:0px");
+        var widget1 = $("<div class='col l12 m6 s12'>");
+        var widget = $("<iframe>");
+        widget.addClass("widget");
+        widget.attr("src", source);
+        widget.attr("frameborder", 0);
+        widget.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height:300px;border:0px");
+        widget1.append(widget);
 
         $("#podcastDiv").append(widget1);
-        $("#podcastDiv").append("<br>");
     }
 
     function makeWidgetTwo(source) {
 
-        var widget2 = $("<iframe>");
-        widget2.addClass("widget");
-        widget2.attr("src", source);
-        widget2.attr("frameborder", 0);
-        widget2.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
+        var widget2 = $("<div class='col l12 m6 s12'>");
+        var widget = $("<iframe>");
+        widget.addClass("widget");
+        widget.attr("src", source);
+        widget.attr("frameborder", 0);
+        widget.attr("style", "overflow-x:hidden;overflow-y:hidden;width:250px;height: 300px;border:0px");
+        widget2.append(widget);
 
         $("#podcastDiv").append(widget2);
     }
@@ -567,7 +496,7 @@ $(document).ready(function(){
             url: queryUrl,
             data: object
         }).done(function(data) {
-            console.log(data);
+            // console.log(data);
             Materialize.toast(type + " saved!", 4000);
             completeStorage();
         });
@@ -578,7 +507,7 @@ $(document).ready(function(){
         row.addClass('row');
 
         var colOne = $('<div>');
-        colOne.addClass('col s9');
+        colOne.addClass('col s9 left-align');
 
         var title = $('<h6>');
 
@@ -620,7 +549,7 @@ $(document).ready(function(){
         row.addClass('row');
 
         var colOne = $('<div>');
-        colOne.addClass('col s9');
+        colOne.addClass('col s9 left-align');
 
         var title = $('<h6>');
 
@@ -671,11 +600,27 @@ $(document).ready(function(){
 
     //scrollspy for podcasts and saved items on smaller screens
     $('.scrollspy').scrollSpy();
+    
+    $('.toc-wrapper').pushpin({
+        top: 800,
+        bottom: 3000
+    });
+    
+    function widthSize() {
+        if ($(window).width() < 1030) {
+            $('.toc-wrapper').pushpin('remove');
+        }
+    }
+
+    widthSize();
+
+    $(window).resize(widthSize);
 
     //Code for Chat Groups
 
     function fillChatGroups(array) {
-
+        // console.log("inside");
+        // console.log(array);
         $('#chatList').empty();
 
         for (var i = 0; i < array.length; i++) {
@@ -683,7 +628,7 @@ $(document).ready(function(){
             row.addClass('row');
 
             var colOne = $('<div>');
-            colOne.addClass('col s9');
+            colOne.addClass('col s9 left-align');
 
             var title = $('<a>');
             title.attr('data-namespace', array[i].namespace);
@@ -700,38 +645,54 @@ $(document).ready(function(){
 
             var colTwo = $('<div>');
             colTwo.addClass('col s3');
-            var delButton = $('<a>');
-            delButton.addClass('btn-floating btn waves-effect waves-light red delGroup');
-            delButton.attr('data-name', array[i].name);
+            var goButton = $('<a>');
+            goButton.addClass('btn-floating btn waves-effect waves-light goButton');
+            goButton.attr('data-name', array[i].name);
 
             var icon = $('<i>');
             icon.addClass('material-icons');
-            icon.text('delete');
-            delButton.append(icon);
+            icon.text('forum');
+            goButton.append(icon);
 
-            colTwo.append(delButton);
+            colTwo.append(goButton);
 
             row.append(colOne).append(colTwo);
 
             $('#chatList').prepend('<br>').prepend('<hr>').prepend(row);
         }
 
+        $('.goButton').on('click', function(event) {
+            event.preventDefault();
+            $(this).parent().prev().children().first().click();
+        });
+
         $('.goToChat').on('click', function(event) {
             event.preventDefault();
             var room = $(this).attr('data-namespace');
             var gname = $(this).text();
             var topics = $(this).next().text();
-            console.log(gname);
-            console.log(topics);
+            // console.log(gname);
+            // console.log(topics);
             
             localStorage.setItem('room', room);
-            localStorage.setItem('groupname', gname);
-            localStorage.setItem('topics', topics);
 
             window.location = "/discuss";
-
         });
 
+        //Delete group from queue, for future...
+        // $('.delGroup').on('click', function(event) {
+        //     event.preventDefault();
+        //     var gname = $(this).attr('data-name');
+
+        //     $.ajax({
+        //         type: "PUT",
+        //         url: "/api/leavegroup/" + gname + "/" + localStorage.getItem('email')
+        //     }).done(function(data) {
+        //         $(this).parent().parent().next().remove();
+        //         $(this).parent().parent().remove();
+        //         console.log(data);
+        //     });
+        // });
     }
 
     function getOpenChatGroups(lean) {
@@ -741,15 +702,16 @@ $(document).ready(function(){
     }
 
     function appendOpenChatGroups(array) {
-        for (var i = 0; i < array.length; i++) {
-            console.log(array[i].member_names.indexOf(localStorage.getItem('username')));
+        $('#openChatGroups').empty();
 
-            if (array[i].member_names.indexOf(localStorage.getItem('username')) === -1) {
+        for (var i = 0; i < array.length; i++) {
+
+            if (array[i].member_array.indexOf(localStorage.getItem('username')) === -1) {
                 var row = $('<div>');
                 row.addClass('row');
 
                 var colOne = $('<div>');
-                colOne.addClass('col s9');
+                colOne.addClass('col s9 left-align');
 
                 var title = $('<h5>');
                 title.text(array[i].name);
@@ -808,7 +770,7 @@ $(document).ready(function(){
                 url: "/api/joingroup/" + localStorage.getItem('email'),
                 data: joinObject
             }).done(function(data) {
-                console.log(data);
+                // console.log(data);
                 Materialize.toast(joinObject.name + " has been added to your Chat Groups in your sidebar!", 7000);
                 fillChatGroups(data);
             });

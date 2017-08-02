@@ -5,6 +5,7 @@
 
 .widget {
 	font-family: "Jura", sans-serif;
+	margin: 20px;
 }
 
 .masthead, .nav-wrapper, .title {
@@ -44,6 +45,10 @@
 	border-radius: 15px;
 }
 
+.chatBtn {
+	border-radius: 15px;
+}
+
 #savedDiv {
 	width:20%;
 	float:right;
@@ -59,9 +64,14 @@
 	font-family: "Days One", sans-serif;
 }
 
+.goToChat {
+	cursor: pointer;
+}
+
 #youTubeDiv {
 	float:left;
 	color:black;
+	height: 3300px;
 	margin-left:5%;
 	margin-right:5%;
 	margin-top: 20px;
@@ -100,6 +110,8 @@ body, nav {
 .page-footer {
 	background-color: black;
 	margin-top: 100px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #logo {
@@ -124,12 +136,6 @@ li#title {
 	margin-top:40px;
 }
 
-.tabs {
-	margin-left:20%;
-	margin-right:20%;
-	width:80%;
-}
-
 p {
 	text-align: justify;
 }
@@ -143,6 +149,16 @@ li#currentUserName {
 	margin-right: 20px;
 }
 
+body {
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+}
+
+#main {
+flex: 1 0 auto;
+}
+
 @media screen and (max-width: 1680px) {
 	#logo {
 		width: 80%;
@@ -150,15 +166,26 @@ li#currentUserName {
 	}
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1280px) and (min-width: 1024px) {
 	#logo {
        width: 100%;
        margin-top: -60px;
 	}
+
+	a.url {
+		margin-top: 10px;
+		float: left;
+	}
+
+	.saveBtn {
+		margin-right: -20%;
+		margin-left: 0;
+		margin-bottom: 0;
+	}
 }
 
-@mediascreen and (max-width: 992px) {
-	
+@mediascreen and (max-width: 1024px) {
+
 }
 
 @media screen and (max-width: 680px) {
@@ -166,6 +193,16 @@ li#currentUserName {
     	margin-top: 5px;
     }
 
+	a.url {
+		margin-top: 10px;
+		float: left;
+	}
+
+	.saveBtn {
+		margin-right: -20%;
+		margin-left: 0;
+		margin-bottom: 0;
+	}
 }
 
 @media screen and (max-width: 460px) {
@@ -173,5 +210,6 @@ li#currentUserName {
         margin-top: 0;
         width: 100%;
 	}
+
 }
 

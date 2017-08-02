@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+     <!--favicon-->
+    <link rel="icon" href="assets/images/favicon.png">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -30,7 +32,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container" id="main">
         <div class="row">
             <br><br><br><br>
             <div class="col s6 offset-s3">
@@ -48,7 +50,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button class="modal-close waves-effect btn" id="getUser">Login</button>
+                        <button class="modal-close red waves-effect btn-large chatBtn" id="getUser">Login</button>
                     </div>
                     <div class="row">
                         <button type="submit" class="modal-close waves-effect btn" id="sessionLogin" style="display: none;">Login</button>
@@ -57,6 +59,14 @@
             </div>
         </div>
     </div>
+    
+    <footer class="page-footer">
+      <div class="footer-copyright center-align">
+        <div class="container">
+        © 2017 Doppelgänger Team - to learn more about us, check out our <a href="/about">About</a> page.
+        </div>
+      </div>
+    </footer>  
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"

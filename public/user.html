@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+     <!--favicon-->
+    <link rel="icon" href="assets/images/favicon.png">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abel|Anton|Days+One|Jura" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -16,16 +19,15 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <a href="/" class="brand-logo masthead"><img src="assets/images/blackbkgdlogo.gif" id="logoImg" alt="head" /></a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li id="title"><a href="/">Doppelgänger</a></li> 
+                    <li id="title"><a href="/">Doppelgänger</a></li>
                     <li><a href="/about">About</a></li>
                 </ul>       
-                <ul id="nav-mobile" class="right show-on-large">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/user/logout">Log Out</a></li>
+                </ul>                
+                <ul id="nav-mobile" class="right">
                     <li id="currentUserName"></li>
                 </ul>        
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li id="currentUserName"></li>
-                    <li><a href="/user/logout">Log Out</a></li>
-                </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="/user/logout">Log Out</a></li>
                     <li><a href="/about">About</a></li>
@@ -33,20 +35,18 @@
                     <li><a href="#savedItems">Your Saved Items</a></li>
                 </ul>
             </div>
-        </nav>  
-<div class="container">
+        </nav>
+<div class="container" id="main">
     <div class="row">
 
     <!-- Search/Topic Div -->
-        <div class="col l9" id="searchBox">
+        <div class="col l8 s12" id="searchBox">
             <h4 class="divTitles">Choose the topic.</h4>
             <div class="col s12">
               <ul class="tabs">
-                <li class="tab col s3 tabs-fixed-width indyTabs"><a class="active" href="#interests">Interests</a></li>
-                <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#politics">Politics</a></li>
-                <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#news">News</a></li>
-                <li class="tab col s3 tabs-fixed-width indyTabs"><a href="#books">Books</a></li>
-
+                <li class="tab col s4 tabs-fixed-width indyTabs"><a class="active" href="#interests">Interests</a></li>
+                <li class="tab col s4 tabs-fixed-width indyTabs"><a href="#politics">Politics</a></li>
+                <li class="tab col s4 tabs-fixed-width indyTabs"><a href="#news">News</a></li>
               </ul>
             </div>
             <div id="interests" class="col s12">
@@ -58,31 +58,19 @@
             <div id="news" class="col s12">
                 <div class="nButtonsDiv"></div>
             </div>     
-            <div id="books" class="col s12">
-                <div class="row">
-                    <form class="col s12">
-                      <div class="row">
-                            <div class="input-field col s6">
-                              <input placeholder="Type a search term here to search for books" id="bookTerm" type="text" class="validate">
-                              <label for="first_name">Search Term</label>
-                            </div>
-                        </div>
-                        <a class="waves-effect waves-light red btn bookSearch">Search</a>
-                    </form>
-                </div>
-                <div class="bButtonsDiv"></div>
-            </div>
 
             <div class="row videoResults">
                 <div id="youTubeDiv"></div>  
             </div>      
         </div>
 
-        <div class="col l3 s12">
-            <div id="podcastDiv" class="section scrollspy">
-                <h4 class="divTitles">Podcasts</h4>
+        <div class="col l4 s12">
+            <div class="row">
+                <div id="podcastDiv" class="section scrollspy center-align">
+                    <h4 class="divTitles">Podcasts</h4>
+                </div>
             </div>
-            <div id="savedItems" class="section scrollspy">
+            <!-- <div id="savedItems" class="section scrollspy hide-on-large-only center-align">
                 <h4 class="divTitles">Your Saved Items</h4>
                 <ul class="collapsible popout savedList" data-collapsible="accordion">
                     <li>
@@ -98,11 +86,37 @@
                       <div class="collapsible-body links" id="chatList"></div>
                     </li>
                 </ul>
-                <a class="waves-effect waves-light btn" id="openGroup">Start a new Chat Group</a>
-
+                <a class="waves-effect red waves-light btn-large chatBtn" id="openGroup">Start a new Chat Group</a>
                 <div id="openChatGroups">
                 </div>
+            </div>  
+            <div id="bottom"></div> -->
+            <div class="row">    
+                <div class="toc-wrapper center-align">
+                    <div id="savedItems" class="section scrollspy">
+                        <h4 class="divTitles">Your Saved Items</h4>
+                        <ul class="collapsible popout savedList" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header left-align"><i class="material-icons">video_library</i>Saved Videos</div>
+                                <div class="collapsible-body links" id="videoList"></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header left-align"><i class="material-icons">library_books</i>Saved Articles</div>
+                                <div class="collapsible-body links" id="articleList"></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header left-align"><i class="material-icons">group</i>Chat Groups</div>
+                              <div class="collapsible-body links" id="chatList"></div>
+                            </li>
+                        </ul>
+                        <h5>Start or Join a Chat Group</h5>
+                        <a class="waves-effect red waves-light btn-large chatBtn" id="openGroup">Start a new Chat Group</a>
+                        <div id="openChatGroups">
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
     </div>
@@ -145,7 +159,14 @@
     </div>
 
 </div>
-    
+
+<footer class="page-footer">
+  <div class="footer-copyright center-align">
+    <div class="container">
+    © 2017 Doppelgänger Team - to learn more about us, check out our <a href="/about">About</a> page.
+    </div>
+  </div>
+</footer>   
 <!-- Compiled and minified JavaScript -->
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
