@@ -25,7 +25,7 @@ The goal of the application is to broaden the users' minds to other perspectives
 
 ![third gif](public/assets/images/saveGif.gif)
 
-### Doppelganger also features chat groups created using Socket.io. A user can join or add a chat group and chat in real-time with other users on various topics.
+### Doppelganger also features chat groups created using Socket.io. A user can join or add a chat group and chat in real time with other users on various topics.
 
 ![chat gif one](public/assets/images/chatOne.gif)
 
@@ -39,6 +39,7 @@ The goal of the application is to broaden the users' minds to other perspectives
  * MongoDB
  * Passport.js
  * YouTube and News APIs
+ * AJAX
  * Socket.io
  * MaterializeCSS
 
